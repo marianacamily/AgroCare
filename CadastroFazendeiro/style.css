@@ -1,0 +1,17 @@
+.main-cadastro {
+    width: 100vw;
+    height: 100vh;
+    background: #4A5034;
+    justify-content: center;
+    align-items: center;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.topo {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+}
