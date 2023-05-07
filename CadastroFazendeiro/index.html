@@ -52,6 +52,7 @@
                 var email = primeiroNome + "." + ultimoNome + "@" + nomeFazenda + ".com.br";
                 document.getElementById("resultado").innerHTML = "O endereço de e-mail é: " + email;
                 alert("O endereço de e-mail é: " + email);
+                submitForm()
             }
 
             function validarFormulario() {
@@ -103,6 +104,10 @@
 
                 // Se chegou até aqui, significa que todos os campos são válidos
                 return true;
+            }
+
+            function submitForm () {
+                alert("formulario enviado")
             }
         </script>
         <footer>
