@@ -23,7 +23,7 @@ body * {
     position: relative;
     width: 500px;
     height: 500px;
-}
+  }
 
 .imagem1 {
     position: absolute;
@@ -128,17 +128,7 @@ body * {
     color: #7C894C;
 }
 
-/* Define a animação do botão */
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-}
-
-
-#login-button {
+.btn-login {
     width: 100%;
     padding: 16px 0px;
     margin: 25px;
@@ -151,21 +141,11 @@ body * {
     color: #7C894C;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px;
-    transition: background-color 0.3s ease-in-out; /* --guilherme// adicionei uma funcao para deixar mais smooth*/
+
 }
 
-#login-button:hover {
+.btn-login:hover {
     background-color:#D9E8A1;
-}
-#login-button:active {
-    transform: translateY(2px)
-}
-#login-button.invalid {  /* guilherme*/
-    animation: shake 0.5s;
-    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-    background-color: #e74c3c;
-    pointer-events: none;
-    color: black;
 }
 
 @media only screen and (max-width: 950px) {
@@ -187,7 +167,7 @@ body * {
     .imagem1 {
         width: 50vw;
     }
-
+    
     .imagem2 {
         width: 50vw;
     }

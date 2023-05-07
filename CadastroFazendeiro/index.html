@@ -9,38 +9,30 @@
     <link rel="stylesheet"  type="text/css" href="style.css">
 </head>
 <header>
-    <img src="logo.png" width="180px">
+   <img src="logo.png" width="180px">
 </header>
 <body>
-<div class="cadastro">
-
-    <p><h1>Cadastrar Fazendeiro</h1></p><br>
-    <form action="cadastrar_fazendo.php" method="post" onsubmit="validarFormulario()">
+    <div class="cadastro">
+   
+        <p><h1>Cadastrar Fazendeiro</h1></p><br>
         <label>Nome:</label>
-        <input type="text" id="nome" name="nome" size="20" maxlength="20" required>
+        <input type="text" size="20" maxlength="20" required>
         <label>CPF:</label>
-        <input type="text" id="cpf" name="cpf" size="20" maxlength="20" required><br><br>
-        <label>Nome da Fazenda:</label>
-        <input type="text" id="nome_fazenda" name="nome_fazenda" size="20" maxlength="20" ><br><br>
-
+        <input type="text" size="20" maxlength="20" required><br><br>
         <label>Data de Nascimento:</label>
-        <input type="date" id="date_nascimento" name="date_nascimento" size="20" maxlength="20" >
+        <input type="date" size="20" maxlength="20" required>
         <label>Telefone:</label>
-        <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXXX - XXXX" ><br><br>
+        <input type="text" placeholder="(XX) XXXXX - XXXX" required><br><br>
         <label>Senha:</label>
-        <input type="password" name="senha" >
+        <input type="password" required>
         <label>Confirmar senha: </label>
-        <input type="password" ><br><br>
+        <input type="password" required><br><br>
         <div class="btns">
             <a href="../Login/index.html"><button id="btn-cancelar" class="btn-cancelar">Cancelar</button></a>
-            <button onclick="gerarEmail()" class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button>
+            <button class="btn-cadastrar">Cadastrar</button>
         </div>
-        <DIV id="resultado"></DIV>
-        <div id="mensagem-erro"></div>
-    </form>
-    <div>
-        <script>
 
+<<<<<<< HEAD
 
 
 
@@ -110,14 +102,14 @@
                 alert("formulario enviado")
             }
         </script>
+=======
+>>>>>>> parent of dd9cae7 (algumas coisas em JS)
         <footer>
             *Ao clicar  em Cadastrar, todas as informações digitadas<br>
-            serão salvas, confira se os dados estão corretos.
+             serão salvas, confira se os dados estão corretos.
         </footer>
-
-
-    </div>
-</div>
+        
+    </fieldset>
 </body>
 
 </html>

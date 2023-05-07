@@ -4,28 +4,38 @@
     <meta charset="UTF-8">
     <meta lang="pt-br">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
     <title>Login Agrocare</title>
 </head>
 <body>
-
-<div class="main-login"> <!-- div de todo o login -->
-    <div class="left-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
-        <img src="agrocare.png" class="imagem1" alt="Logo agrocare branca">
-        <img src="vaca.png" class="imagem2" alt="Vaca logo agrocare branca">
-    </div>
-    <div class="right-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
-        <div class="card-login">
-            <h1>LOGIN</h1>
-            <p>Escolha sua função:</p>
-            <div style="width: 350px;">
-                <input type="radio" id="fazendeiro" name="funcao" value="fazendeiro"  required>
-                <label for="fazendeiro">Fazendeiro</label>
-                <input type="radio" id="veterinario" name="funcao" value="veterinario" required>
-                <label for="veterinario">Veterinário</label>
-                <input type="radio" id="auxiliar" name="funcao" value="auxiliar" required>
-                <label for="auxiliar">Auxiliar</label>
+    <div class="main-login"> <!-- div de todo o login -->
+        <div class="left-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
+            <img src="agrocare.png" class="imagem1" alt="Logo agrocare branca">
+            <img src="vaca.png" class="imagem2" alt="Vaca logo agrocare branca">
+        </div>
+        <div class="right-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
+            <div class="card-login">
+                <h1>LOGIN</h1>
+                <p>Escolha sua função:</p>
+                <div style="width: 350px;">
+                    <input type="radio" id="fazendeiro" name="função" value="fazendeiro" required>
+                    <label for="fazendeiro">Fazendeiro</label>
+                    <input type="radio" id="veterinario" name="função" value="veterinario" required>
+                    <label for="veterinario">Veterinário</label>
+                    <input type="radio" id="auxiliar" name="função" value="auxiliar" required>
+                    <label for="auxiliar">Auxiliar</label>
+                </div>
+                <div class="texto-login">
+                    <label for="usuario">Email:</label>
+                    <input type="text" name="usuario" placeholder="Digite seu email" required>
+                </div>
+                <div class="senha-login">
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" placeholder="Digite sua senha" required>
+                </div>
+                <a href="../CadastroFazendeiro/index.html"><button class="btn-login">Entrar</button></a>
             </div>
+<<<<<<< HEAD
 
             <div class="texto-login">
                 <label for="email">Email:</label>
@@ -98,5 +108,9 @@
     emailInput.addEventListener('input', validateForm);
     passwordInput.addEventListener('input', validateForm);
 </script>
+=======
+        </div>
+    </div>
+>>>>>>> parent of dd9cae7 (algumas coisas em JS)
 </body>
 </html>
