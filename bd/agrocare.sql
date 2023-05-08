@@ -27,6 +27,11 @@ CREATE TABLE 'Fazendeiro' (
 ALTER TABLE 'Fazenda'
     MODIFY 'id_Fazenda' int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
+
+ALTER TABLE 'Fazenda'
+    ADD CONSTRAINT 'FK_cpf_Fazendeiro' 
+	FOREIGN KEY ('cpf_Fazendeiro') REFERENCES 'Fazendeiro'('cpf_Fazendeiro');
+
     
 CREATE TABLE 'Veterinário' (
     'nome_Vet' varchar(50) NOT NULL,
