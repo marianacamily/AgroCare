@@ -43,8 +43,8 @@
                     <label for="fazendeiro">Fazendeiro</label>
                     <input type="radio" id="veterinario" name="funcao" value="veterinario" required>
                     <label for="veterinario">Veterinário</label>
-                    <input type="radio" id="auxiliar" name="funcao" value="auxiliar" required>
-                    <label for="auxiliar">Auxiliar</label>
+                    <input type="radio" id="funcionario" name="funcao" value="funcionario" required>
+                    <label for="auxiliar">Funcinário</label>
                 </div>
                 <div class="texto-login">
                     <label for="usuario">Email:</label>
