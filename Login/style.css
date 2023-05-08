@@ -91,7 +91,7 @@ body * {
     border: none;
     border-radius: 10px;
     padding: 15px;
-    background: #D9E8A1;
+    background: #afbb85;
     font-size: 12pt;
     box-shadow: 0px 10px 40px #00000056;
     outline: none;
@@ -103,7 +103,7 @@ body * {
     border: none;
     border-radius: 10px;
     padding: 15px;
-    background: #D9E8A1;
+    background: #afbb85;
     font-size: 12pt;
     box-shadow: 0px 10px 40px #00000056;
     outline: none;
@@ -111,21 +111,21 @@ body * {
 }
 
 .texto-login > label {
-    color: #7C894C;
+    color: #4A5034;
     margin-bottom: 10px;
 }
 
 .senha-login > label {
-    color: #7C894C;
+    color: #4A5034;
     margin-bottom: 10px;
 }
 
 .texto-login > input::placeholder {
-    color: #7C894C
+    color: #4A5034
 }
 
 .senha-login > input::placeholder {
-    color: #7C894C;
+    color: #4A5034;
 }
 /* Define a animação do botão */
 @keyframes shake {
@@ -139,19 +139,20 @@ body * {
     width: 100%;
     padding: 16px 0px;
     margin: 25px;
+    background-color: #4A5034;
     border: none;
     border-radius: 8px;
     outline: none;
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 4px;
-    color: #7C894C;
+    color: #FFFF;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px;
     transition: background-color 0.3s ease-in-out; /* --guilherme// adicionei uma funcao para deixar mais smooth*/
 }
 #login-button:hover {
-    background-color:#D9E8A1;
+    background-color:#7C894C;
 }
 #login-button:active {
     transform: translateY(2px)
