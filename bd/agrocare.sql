@@ -16,7 +16,6 @@ CREATE TABLE 'Fazenda' (
 
 CREATE TABLE 'Fazendeiro' (
     'nome_Fazendeiro' varchar(50) NOT NULL,
-    'sobrenome_Fazendeiro' varchar(50) NOT NULL,
     'cpf_Fazendeiro' PRIMARY KEY char(14) NOT NULL,
     'dt_NascFazendeiro' Date NOT NULL,
     'telefone_Fazendeiro' char(14) NOT NULL,
@@ -31,7 +30,6 @@ ALTER TABLE 'Fazenda'
     
 CREATE TABLE 'Veterinário' (
     'nome_Vet' varchar(50) NOT NULL,
-    'sobrenome_Vet' varchar(50) NOT NULL,
     'cpf_Vet' char(14) NOT NULL,
     'dt_NascVet' Date NOT NULL,
     'telefone_Vet' char(14) NOT NULL,
@@ -42,7 +40,6 @@ CREATE TABLE 'Veterinário' (
 
 CREATE TABLE 'Funcionário'(
     'nome_Funci' varchar(50) NOT NULL,
-    'sobrenome_Funci' varchar(50) NOT NULL,
     'cpf_Funci' char(14) NOT NULL,
     'dt_NascFunci' Date NOT NULL,
     'telefone_Funci' char(14) NOT NULL,

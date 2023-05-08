@@ -37,7 +37,7 @@ $telefone = $_POST["telefone"];
 $senha = $_POST["senha"];
 
 // Insere os dados no banco de dados
-$sql = "INSERT INTO fazendeiros (nome, cpf, data_nascimento, telefone, senha) VALUES ('$nome', '$cpf', '$data_nascimento', '$telefone', '$senha')";
+$sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_NascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) VALUES ('$nome', '$cpf', '$data_nascimento', '$telefone', '$senha')";
 
 //if (mysqli_query($conn, $sql)) {
 //    echo "Dados cadastrados com sucesso!";
