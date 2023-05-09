@@ -5,9 +5,9 @@
     global $password;
     global $database;
 
-    $servername = "localhost:3306";
-    $username = "agrocare@TI";
-    $password = "projeto@agrocare";
+    $servername = "localhost";
+    $username = "agrocare";
+    $password = " ";
     $database = "agrocarefinal";
 
 
@@ -16,5 +16,6 @@
         die('Erro de conexão: '.mysqli_connect_error());
     } 
 ?>
+
 
 
