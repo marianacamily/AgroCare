@@ -1,0 +1,41 @@
+.records{
+    width: 100%;
+    user-select: none;
+    text-align: center;
+    background-color:#ffffff;
+    text-align: center;
+}
+
+.records th{
+    height: 50px;
+    background-color:#728a1e;
+    padding-left: 20px;
+    font-size: 1.2rem; 
+    border-bottom: 1px #444931;
+    border-top: 1px solid #444931;
+    border: 2px solid #144612;
+    border-radius: 10px;  
+    text-align: center;   
+}
+.records td{
+    height: 50px;
+    padding-left: 20px;
+    border-left: 1px solid #444931;
+    border-right: 1px solid #444931;
+    border-bottom: 1px #444931;
+    border-top: 1px solid #444931;
+    border: 2px solid #144612;
+    border-radius: 10px; 
+    text-align: center;    
+}
+
+.records th:last-child,
+.records td:last-child{
+    padding: 0;
+    min-width: 140px;
+    
+}
+
+.records tr:hover{
+    background-color:#a0b164;
+}
