@@ -36,9 +36,9 @@ body * {
 .imagem2 {
     position: absolute;
     top: 120px;
-    right: 40px;
     z-index: 1;
-    width: 80%;
+    right: 90px;
+    width: 60%;
     height: auto;
 
 }
