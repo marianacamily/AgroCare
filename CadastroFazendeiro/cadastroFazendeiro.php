@@ -24,19 +24,19 @@
     $senha = $_POST["senha_Fazendeiro"];
 
     // Crie a conexão com o banco de dados
-    $conn = new mysqli("localhost", "agrocare", "", "agrocarefinal");
+    $connectbd = new mysqli("localhost", "agrocare", "", "agrocarefinal");
     
     // Configura para trabalhar com caracteres acentuados do português
-    mysqli_query($conn, "SET NAMES 'utf8'");
-    mysqli_query($conn, 'SET character_set_connection=utf8');
-    mysqli_query($conn, 'SET character_set_client=utf8');
-    mysqli_query($conn, 'SET character_set_results=utf8');
+    mysqli_query($connectbd, "SET NAMES 'utf8'");
+    mysqli_query($connectbd, 'SET character_set_connectbdection=utf8');
+    mysqli_query($connectbd, 'SET character_set_client=utf8');
+    mysqli_query($connectbd, 'SET character_set_results=utf8');
 
 
         // Insere os dados no banco de dados
     $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_NascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) VALUES ('$nome', '$cpf', '$dt_nascFazendeiro', '$telefone_Fazendeiro', '$senha_Fazendeiro')";
     // Insere os dados no banco de dados
-    if (mysqli_query($connectbd, $sql)) {
+    if (mysqli_query($connectbdectbd, $sql)) {
         echo "Dados cadastrados com sucesso!";
     } else {
         echo "Erro ao cadastrar os dados: " . mysqli_error($connectbd);
@@ -81,19 +81,6 @@
             </div>
         </form>
         <div>
-
-        <?php
-
-        if($result = mysqli_query($conn, $sql)) {
-            echo "<p><p>&nbsp;Registro cadastrado com sucesso! </p>";
-        } else {
-            echo "<p>&nbsp;Erro executando INSERT: " . mysqli_error($conn . "</p>");
-        }
-        echo "</div>";
-        // Fecha a conexão com o banco de dados
-        mysqli_close($conn);
-
-        ?>
             <div id="resultado"></div>
             <div id="mensagem-erro"></div>
         <footer>

@@ -10,25 +10,58 @@
 <body>
     <?php
     if(isset($_POST['submit'])){
+                    // Verificar o valor do input radio recebido
         $funcao = $_POST['funcao'];
         $email = $_POST['usuario'];
         $senha = $_POST['senha'];
 
         // faça a conexão com o banco de dados
-        $conn = mysqli_connect('localhost', 'agrocare', '', 'agrocarefinal') or die(mysqli_error($conn));
+        $connectbd = mysqli_connect('localhost', 'agrocare', '', 'agrocarefinal') or die(mysqli_error($connectbd));
         // Verifique se ocorreu algum erro na conexão
-        if ($conn->connect_error) {
-            die("Erro na conexão: " . $conn->connect_error);
+        if ($connectbd->connect_error) {
+            die("Erro na conexão: " . $connectbd->connect_error);
         }
-        // Crie a consulta SQL
-        $sql = "SELECT * FROM [table] WHERE email = '$email' AND senha = '$senha'";
 
-        // Executa a consulta
-        $resultado = $conn->query($sql);
+        // Realizar a consulta no banco de dados correspondente
+        if ($funcao === 'fazendeiro') {
+            // Consulta na tabela dos fazendeiro
+            
+                // Crie a consulta SQL
+            $sql = "SELECT * FROM [Fazendeiro] WHERE email_Fazendeiro = '$email' AND senha_Fazendeiro = '$senha'";
+                // Executa a consulta
+            $resultado = $connectbd->query($sql);
+                
+                // Verifica se houve um erro na consulta
+            if (!$resultado) {
+                die("Erro na consulta: " . $connectbd->error);
+            }
 
+            } elseif ($funcao === 'veterinario') {
+            // Consulta na tabela dos veterinários
+                // Crie a consulta SQL
+                $sql = "SELECT * FROM [Veterinário] WHERE email_Vet = '$email' AND senha_Vet = '$senha'";
+                // Executa a consulta
+                $resultado = $connectbd->query($sql);
+                            
+                // Verifica se houve um erro na consulta
+                if (!$resultado) {
+                die("Erro na consulta: " . $connectbd->error);
+                }
+            } elseif ($funcao === 'auxiliar') {
+            // Consulta na tabela dos auxiliar
+                // Crie a consulta SQL
+                $sql = "SELECT * FROM [Funcionário] WHERE email_Func = '$email' AND senha_Func = '$senha'";
+                // Executa a consulta
+                $resultado = $connectbd->query($sql);
+                            
+                // Verifica se houve um erro na consulta
+                if (!$resultado) {
+                die("Erro na consulta: " . $connectbd->error);
+                }
+        }
         // Verifica se houve um erro na consulta
         if (!$resultado) {
-            die("Erro na consulta: " . $conn->error);
+            die("Erro na consulta: " . $connectbd->error);
         }
 
         // Verifica o número de linhas retornadas pelo resultado da consulta
@@ -40,73 +73,15 @@
             session_start();
 
             // Definir variáveis de sessão para armazenar informações do usuário logado
-            $_SESSION['email'] = $email;
-
+            $_SESSION['usuario'] = $email;
 
         } else {
             //combinacao de email e senha invalida
             echo "combinacao de email e senha invalida.!";
         }
 
-        $conn->close();
+        $connectbd->close();
     }
-        // insira os valores na tabela de login
-        //$sql = "INSERT INTO login (funcao, email, senha) VALUES ('$funcao', '$email', '$senha')";
-        //$resultado = mysqli_query($conn, $sql) or die(mysqli_error($sql));
-
-    //if (mysqli_query($conn, $sql)) {
-    //    echo "Dados cadastrados com sucesso!";
-    //} else {
-    //    echo "Erro ao cadastrar os dados: " . mysqli_error($conn);
-    //}}
-
-
-
-
-    
-        /*
-        <?php
-            // Verificar o valor do input radio recebido
-            $profissao = $_POST['funcao'];
-
-            // Realizar a consulta no banco de dados correspondente
-            if ($profissao === 'fazendeiro') {
-            // Consulta na tabela dos fazendeiro
-            } elseif ($profissao === 'veterinario') {
-            // Consulta na tabela dos veterinários
-            } elseif ($profissao === 'auxiliar') {
-            // Consulta na tabela dos auxiliar
-            }
-
-            // Restante do código para verificar o e-mail e a senha no banco de dados e realizar o login
-        ?>
-        <script>
-                    // Capturar o valor do input radio selecionado
-        var radios = document.getElementsByName('funcao');
-        var funcaoSelecionado = '';
-        for (var i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            funcaoSelecionado = radios[i].value;
-            break;
-        }
-        }
-
-        // Adicionar o valor selecionado como um parâmetro no formulário
-        var form = document.querySelector('form');
-        form.addEventListener('submit', function() {
-        var inputFuncao = document.createElement('input');
-        inputFuncao.type = 'hidden';
-        inputFuncao.name = 'funcao';
-        inputFuncao.value = funcaoSelecionado;
-        form.appendChild(inputFuncao);
-        });
-
-        </script>
-
-
-
-         */
-    
     ?>
 
     <div class="main-login"> <!-- div de todo o login -->
@@ -135,7 +110,7 @@
                         <label for="senha">Senha:</label>
                         <input type="password" id="password" name="senha" placeholder="Digite sua senha" required>
                     </div>
-                    <a href="../CadastroFazendeiro/index.php"><button id="login-button" class="btn-login" type="submit" name="submit">Entrar</button></a>
+                    <a href=".#"><button id="login-button" class="btn-login" type="submit" name="submit">Entrar</button></a>
                 </div>
             </form>
         </div>
@@ -196,6 +171,24 @@
         // Adiciona evento de validação a cada vez que um input é alterado
         emailInput.addEventListener('input', validateForm);
         passwordInput.addEventListener('input', validateForm);
+
+        // Capturar o valor do input radio selecionado
+        var radios = document.getElementsByName('funcao');
+        var funcaoSelecionado = '';
+        for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            funcaoSelecionado = radios[i].value;
+            break;
+        }}
+        // Adicionar o valor selecionado como um parâmetro no formulário
+        var form = document.querySelector('form');
+        form.addEventListener('submit', function() {
+        var inputFuncao = document.createElement('input');
+        inputFuncao.type = 'hidden';
+        inputFuncao.name = 'funcao';
+        inputFuncao.value = funcaoSelecionado;
+        form.appendChild(inputFuncao);
+        });
     </script>
 </body>
 </html>
