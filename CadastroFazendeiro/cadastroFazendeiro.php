@@ -14,30 +14,34 @@
 <body>
 
 <?php
+    include("conexao_agrocare.ph");
+    // Recebe os dados do formulário
+    $nome = $_POST["nome_Fazendeiro"];
+    $cpf = $_POST["cpf_Fazendeiro"];
+    $nome_fazenda = $_POST["nome_Fazenda"];
+    $data_nascimento = $_POST["dt_nascFazendeiro"];
+    $telefone = $_POST["telefone_Fazendeiro"];
+    $senha = $_POST["senha_Fazendeiro"];
 
-// Cria a conexão com o banco de dados
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+    // Crie a conexão com o banco de dados
+    $conn = new mysqli("localhost", "agrocare", "", "agrocarefinal");
+    
+    // Configura para trabalhar com caracteres acentuados do português
+    mysqli_query($conn, "SET NAMES 'utf8'");
+    mysqli_query($conn, 'SET character_set_connection=utf8');
+    mysqli_query($conn, 'SET character_set_client=utf8');
+    mysqli_query($conn, 'SET character_set_results=utf8');
 
-// Checa se a conexão foi bem sucedida
-if (!$conn) {
-    die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
-}
 
-// Configura para trabalhar com caracteres acentuados do português
-mysqli_query($conn, "SET NAMES 'utf8'");
-mysqli_query($conn, 'SET character_set_connection=utf8');
-mysqli_query($conn, 'SET character_set_client=utf8');
-mysqli_query($conn, 'SET character_set_results=utf8');
-
-// Recebe os dados do formulário
-$nome = $_POST["nome"];
-$cpf = $_POST["cpf"];
-$data_nascimento = $_POST["data_nascimento"];
-$telefone = $_POST["telefone"];
-$senha = $_POST["senha"];
-
-// Insere os dados no banco de dados
-$sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_NascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) VALUES ('$nome', '$cpf', '$data_nascimento', '$telefone', '$senha')";
+        // Insere os dados no banco de dados
+    $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_NascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) VALUES ('$nome', '$cpf', '$dt_nascFazendeiro', '$telefone_Fazendeiro', '$senha_Fazendeiro')";
+    // Insere os dados no banco de dados
+    if (mysqli_query($connectbd, $sql)) {
+        echo "Dados cadastrados com sucesso!";
+    } else {
+        echo "Erro ao cadastrar os dados: " . mysqli_error($connectbd);
+    }
+    mysqli_close($connectbd);
 
 //if (mysqli_query($conn, $sql)) {
 //    echo "Dados cadastrados com sucesso!";
@@ -50,23 +54,23 @@ $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_NascFazendei
     <div class="cadastro">
    
         <p><h1>Cadastrar Fazendeiro</h1></p><br>
-        <form action="cadastrar_fazendo.php" method="post">
+        <form action="cadastroFazendeiro.php" method="POST">
             <label>Nome:</label>             <!--adicionado atributo pattern para regex-->
-            <input type="text" id="nome" name="nome" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
+            <input type="text" id="nome" name="nome_Fazendeiro" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
-            <input type="text" name="cpf" size="20" maxlength="20" required><br><br>
+            <input type="text" name="cpf_Fazendeiro" size="20" maxlength="20" required><br><br>
             <!--adicionado input de nome da fazendo-->
             <label>Nome da Fazenda:</label>
-            <input type="text" id="nome_fazenda" name="nome_fazenda" size="20" maxlength="20" ><br><br>
+            <input type="text" id="nome_Fazenda" name="nome_fazenda" size="20" maxlength="20" ><br><br>
 
             <label>Data de Nascimento:</label>
-            <input type="date" name="date_nascimento" size="20" maxlength="20" required>
+            <input type="date" name="dt_nascFazendeiro" size="20" maxlength="20" required>
 
             <label>Telefone:</label>            <!--adicionado atributo pattern para regex-->
-            <input type="text" name="telefone" placeholder="(XX) XXXXX - XXXX" pattern="^\d{4}-\d{3}-\d{4}$" required><br><br>
+            <input type="text" name="telefone_Fazendeiro" placeholder="(XX) XXXXX - XXXX" pattern="^\d{4}-\d{3}-\d{4}$" required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha" required>
+            <input type="password" name="senha_Fazendeiro" required>
 
             <label>Confirmar senha: </label>
             <input type="password" required><br><br>
