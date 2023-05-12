@@ -11,7 +11,7 @@
 <?php
     if(isset($_POST['submit'])){
                     // Verificar o valor do input radio recebido
-        $funcao = $_POST['funcao'];
+        $funcao = $_POST['função'];
         $email = $_POST['usuario'];
         $senha = $_POST['senha'];
 
@@ -67,9 +67,6 @@
                 die("Erro na consulta: " . $conn->error);
                 }
         }
-        if (!$resultado === false) {
-            die("erro na consulta: " . $conn->error);
-        }
 
         // Verifica o número de linhas retornadas pelo resultado da consulta
         if (mysqli_num_rows($resultado) == 1) {
@@ -77,8 +74,11 @@
             // Iniciar a sessão (se já não estiver iniciada)
             session_start();
             $_SESSION['usuario'] = $email;
+
+            // Dados validados
+            echo "Dados validados! Redirecionando...";
             // Definir variáveis de sessão para armazenar informações do usuário logado
-            header('Location: CadastroFazendeiro/index.php');
+            echo "<script>window.location.href = 'telaPrincipal.php';</script>";
             exit;
 
             $_SESSION['usuario'] = $email;
@@ -99,7 +99,7 @@
         </div>
         <div class="right-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
             <div class="card-login">
-                <form action="index.php" method = "POST">
+                <form action="login.php" method = "POST">
                     <h1>LOGIN</h1>
                     <p>Escolha sua função:</p>
                     <div style="width: 350px;">
@@ -108,7 +108,7 @@
                         <input type="radio" id="Veterinário" name="função" value="Veterinário" required>
                         <label for="Veterinário">Veterinário</label>
                         <input type="radio" id="Funcionário" name="função" value="Funcionário" required>
-                        <label for="Funcionário">Auxiliar</label>
+                        <label for="Funcionário">Funcionário</label>
                     </div>
                     <div class="texto-login">
                         <label for="usuario">Email:</label>

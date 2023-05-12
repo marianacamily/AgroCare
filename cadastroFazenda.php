@@ -36,7 +36,6 @@
             if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);
             }
-    
             // Crie a consulta SQL para inserir os dados na tabela fazenda
             $sql = "INSERT INTO Fazenda(nome_Fazenda, endereço_Fazenda, bairro_Fazenda, numero_Fazenda, cidade_Fazenda, estado_Fazenda, cep_Fazenda) 
             VALUES ('$nome_Faz', '$endereço_Faz', '$bairro_Faz', '$numero_Faz', '$cidade_Faz', '$estado_Faz', '$cep_Faz')";   
