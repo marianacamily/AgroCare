@@ -12,44 +12,46 @@
    <img src="logo.png" width="180px">
 </header>
 <body>
-
 <?php
-    include("conexao_agrocare.ph");
-    // Recebe os dados do formulário
-    $nome = $_POST["nome_Fazendeiro"];
-    $cpf = $_POST["cpf_Fazendeiro"];
-    $nome_fazenda = $_POST["nome_Fazenda"];
-    $data_nascimento = $_POST["dt_nascFazendeiro"];
-    $telefone = $_POST["telefone_Fazendeiro"];
-    $senha = $_POST["senha_Fazendeiro"];
-
-    // Crie a conexão com o banco de dados
-    $connectbd = new mysqli("localhost", "agrocare", "", "agrocarefinal");
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // Configura para trabalhar com caracteres acentuados do português
-    mysqli_query($connectbd, "SET NAMES 'utf8'");
-    mysqli_query($connectbd, 'SET character_set_connectbdection=utf8');
-    mysqli_query($connectbd, 'SET character_set_client=utf8');
-    mysqli_query($connectbd, 'SET character_set_results=utf8');
+        // Recebe os dados do formulário
+        $nome = $_POST["nome_Fazendeiro"];
+        $cpf = $_POST["cpf_Fazendeiro"];
+        $dt_nasc = $_POST["dt_nascFazendeiro"];
+        $telefone = $_POST["telefone_Fazendeiro"];
+        $senha = $_POST["senha_Fazendeiro"];
 
+        // Exemplo de inserção no banco de dados usando mysqli
+        $servername = "localhost";
+        $username = "agrocare";
+        $password = " ";
+        $database = "agrocarefinal";
 
-        // Insere os dados no banco de dados
-    $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_NascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) VALUES ('$nome', '$cpf', '$dt_nascFazendeiro', '$telefone_Fazendeiro', '$senha_Fazendeiro')";
-    // Insere os dados no banco de dados
-    if (mysqli_query($connectbdectbd, $sql)) {
-        echo "Dados cadastrados com sucesso!";
-    } else {
-        echo "Erro ao cadastrar os dados: " . mysqli_error($connectbd);
-    }
-    mysqli_close($connectbd);
+        // Crie a conexão com o banco de dados
+        $conn = new mysqli("localhost", "agrocare", " ", "agrocarefinal");
 
+        // Verifique se ocorreu um erro na conexão
+        if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
+        }
+
+        // Crie a consulta SQL para inserir os dados na tabela de funcionários
+        $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha')";   
+
+        // Execute a consulta
+        if ($conn->query($sql) === TRUE) {
+            echo "Dados cadastrados com sucesso!";
+        } else {
+            echo "Erro ao cadastrar os dados: " . $conn->error;
+        }
+        mysqli_close($conn);
+}
 //if (mysqli_query($conn, $sql)) {
 //    echo "Dados cadastrados com sucesso!";
 //} else {
 //    echo "Erro ao cadastrar os dados: " . mysqli_error($conn);
 //}
-
-
 ?>
     <div class="cadastro">
    
@@ -76,7 +78,7 @@
             <input type="password" required><br><br>
 
             <div class="btns">
-                <a href="../Login/index.html"><button id="btn-cancelar" class="btn-cancelar">Cancelar</button></a>
+                <a href="login.php"><button id="btn-cancelar" class="btn-cancelar">Cancelar</button></a>
                 <button onclick="gerarEmail()" class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button>
             </div>
         </form>

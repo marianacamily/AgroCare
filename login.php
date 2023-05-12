@@ -4,75 +4,83 @@
     <meta charset="UTF-8">
     <meta lang="pt-br">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style_login.css">
     <title>Login Agrocare</title>
 </head>
 <body>
-    <?php
+<?php
     if(isset($_POST['submit'])){
                     // Verificar o valor do input radio recebido
         $funcao = $_POST['funcao'];
         $email = $_POST['usuario'];
         $senha = $_POST['senha'];
 
-        // faça a conexão com o banco de dados
-        $connectbd = mysqli_connect('localhost', 'agrocare', '', 'agrocarefinal') or die(mysqli_error($connectbd));
-        // Verifique se ocorreu algum erro na conexão
-        if ($connectbd->connect_error) {
-            die("Erro na conexão: " . $connectbd->connect_error);
+
+        $servername = "localhost";
+        $username = "agrocare";
+        $password = " ";
+        $database = "agrocarefinal";
+
+        // Crie uma conexão com o banco de dados
+        $conn = new mysqli($servername, $username, $password, $database);
+    
+        // Verifique se ocorreu um erro na conexão
+        if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
         }
 
         // Realizar a consulta no banco de dados correspondente
-        if ($funcao === 'fazendeiro') {
-            // Consulta na tabela dos fazendeiro
+        if ($funcao === 'Fazendeiro') {
+            // Consulta na tabela dos Fazendeiro
             
                 // Crie a consulta SQL
-            $sql = "SELECT * FROM [Fazendeiro] WHERE email_Fazendeiro = '$email' AND senha_Fazendeiro = '$senha'";
+            $sql = "SELECT * FROM Fazendeiro WHERE email_Fazendeiro = '$email' AND senha_Fazendeiro = '$senha'";
                 // Executa a consulta
-            $resultado = $connectbd->query($sql);
+            $resultado = $conn->query($sql);
                 
                 // Verifica se houve um erro na consulta
             if (!$resultado) {
-                die("Erro na consulta: " . $connectbd->error);
+                die("Erro na consulta: " . $conn->error);
             }
 
-            } elseif ($funcao === 'veterinario') {
+            } elseif ($funcao === 'Veterinário') {
             // Consulta na tabela dos veterinários
                 // Crie a consulta SQL
-                $sql = "SELECT * FROM [Veterinário] WHERE email_Vet = '$email' AND senha_Vet = '$senha'";
+                $sql = "SELECT * FROM Veterinário WHERE email_Vet = '$email' AND senha_Vet = '$senha'";
                 // Executa a consulta
-                $resultado = $connectbd->query($sql);
+                $resultado = $conn->query($sql);
                             
                 // Verifica se houve um erro na consulta
                 if (!$resultado) {
-                die("Erro na consulta: " . $connectbd->error);
+                die("Erro na consulta: " . $conn->error);
                 }
-            } elseif ($funcao === 'auxiliar') {
+            } elseif ($funcao === 'Funcionário') {
             // Consulta na tabela dos auxiliar
                 // Crie a consulta SQL
-                $sql = "SELECT * FROM [Funcionário] WHERE email_Func = '$email' AND senha_Func = '$senha'";
+                $sql = "SELECT * FROM Funcionário WHERE email_Func = '$email' AND senha_Func = '$senha'";
                 // Executa a consulta
-                $resultado = $connectbd->query($sql);
+                $resultado = $conn->query($sql);
+                echo"login bem-sucedido!";
                             
                 // Verifica se houve um erro na consulta
                 if (!$resultado) {
-                die("Erro na consulta: " . $connectbd->error);
+                die("Erro na consulta: " . $conn->error);
                 }
         }
-        // Verifica se houve um erro na consulta
-        if (!$resultado) {
-            die("Erro na consulta: " . $connectbd->error);
+        if (!$resultado === false) {
+            die("erro na consulta: " . $conn->error);
         }
 
         // Verifica o número de linhas retornadas pelo resultado da consulta
         if (mysqli_num_rows($resultado) == 1) {
-            //login bem-sucedido
-            echo"login bem-sucedido!";
 
             // Iniciar a sessão (se já não estiver iniciada)
             session_start();
-
+            $_SESSION['usuario'] = $email;
             // Definir variáveis de sessão para armazenar informações do usuário logado
+            header('Location: CadastroFazendeiro/index.php');
+            exit;
+
             $_SESSION['usuario'] = $email;
 
         } else {
@@ -80,39 +88,42 @@
             echo "combinacao de email e senha invalida.!";
         }
 
-        $connectbd->close();
+        $conn->close();
     }
-    ?>
+?>
 
-    <div class="main-login"> <!-- div de todo o login -->
+<div class="main-login"> <!-- div de todo o login -->
         <div class="left-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
-            <img src="agrocare.png" class="imagem1" alt="Logo agrocare branca">
-            <img src="vaca.png" class="imagem2" alt="Vaca logo agrocare branca">
+            <img src="img/agrocare.png" class="imagem1" alt="Logo agrocare branca">
+            <img src="img/vaca.png" class="imagem2" alt="Vaca logo agrocare branca">
         </div>
         <div class="right-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
-            <form action="index.php" method = "POST">
-                <div class="card-login">
+            <div class="card-login">
+                <form action="index.php" method = "POST">
                     <h1>LOGIN</h1>
                     <p>Escolha sua função:</p>
                     <div style="width: 350px;">
-                        <input type="radio" id="fazendeiro" name="funcao" value="fazendeiro" required>
-                        <label for="fazendeiro">Fazendeiro</label>
-                        <input type="radio" id="veterinario" name="funcao" value="veterinario" required>
-                        <label for="veterinario">Veterinário</label>
-                        <input type="radio" id="funcionario" name="funcao" value="funcionario" required>
-                        <label for="auxiliar">Funcinário</label>
+                        <input type="radio" id="Fazendeiro" name="função" value="Fazendeiro" required>
+                        <label for="Fazendeiro">Fazendeiro</label>
+                        <input type="radio" id="Veterinário" name="função" value="Veterinário" required>
+                        <label for="Veterinário">Veterinário</label>
+                        <input type="radio" id="Funcionário" name="função" value="Funcionário" required>
+                        <label for="Funcionário">Auxiliar</label>
                     </div>
                     <div class="texto-login">
                         <label for="usuario">Email:</label>
-                        <input type="email" id="email" name="usuario" placeholder="Digite seu email" required>
+                        <input type="text" name="usuario" placeholder="Digite seu email" required>
                     </div>
                     <div class="senha-login">
                         <label for="senha">Senha:</label>
-                        <input type="password" id="password" name="senha" placeholder="Digite sua senha" required>
+                        <input type="password" name="senha" placeholder="Digite sua senha" required>
                     </div>
-                    <a href=".#"><button id="login-button" class="btn-login" type="submit" name="submit">Entrar</button></a>
-                </div>
-            </form>
+                    <a href="#"><button id="login-button" class="btn-login" type="submit" name="submit">Entrar</button></a>
+                    <div>
+                        <p>Não possui sua Fazenda cadastrada? Cadastre-se <a href="cadastroFazendeiro.php" class="button-link" >aqui.</a></p>
+                    </div>
+                </form> 
+            </div>
         </div>
     </div>
 
