@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.main-login {
+    width: 100vw;
+    height: 100vh;
+    background: #4A5034;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-login {
+    position: relative;
+    width: 500px;
+    height: 500px;
+  }
+
+.imagem1 {
+    position: absolute;
+    bottom: 110px;
+    left: 1;
+    z-index: 2;
+
+}
+
+.imagem2 {
+    position: absolute;
+    top: 120px;
+    z-index: 1;
+    right: 90px;
+    width: 60%;
+    height: auto;
+
+}
+.right-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+    background: #FFFF
+}
+
+.card-login > h1 {
+    margin: 0;
+    font-weight: 800;
+    color: #7C894C
+}
+
+.texto-login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+}
+
+.senha-login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+}
+
+.texto-login > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #afbb85;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.senha-login > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #afbb85;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.texto-login > label {
+    color: #4A5034;
+    margin-bottom: 10px;
+}
+
+.senha-login > label {
+    color: #4A5034;
+    margin-bottom: 10px;
+}
+
+.texto-login > input::placeholder {
+    color: #4A5034
+}
+
+.senha-login > input::placeholder {
+    color: #4A5034;
+}
+/* Define a animação do botão */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+#login-button {
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    background-color: #4A5034;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #FFFF;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px;
+    transition: background-color 0.3s ease-in-out; /* --guilherme// adicionei uma funcao para deixar mais smooth*/
+}
+#login-button:hover {
+    background-color:#7C894C;
+}
+#login-button:active {
+    transform: translateY(2px)
+}
+#login-button.invalid {  /* guilherme*/
+    animation: shake 0.5s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: #e74c3c;
+    pointer-events: none;
+    color: black;
+}
+
+@media only screen and (max-width: 950px) {
+    .card-login {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .main-login {
+        flex-direction: column;
+    }
+
+    .right-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .imagem1 {
+        width: 50vw;
+    }
+    
+    .imagem2 {
+        width: 50vw;
+    }
+
+    .card-login {
+
+        width: 90;
+    }
+}
+.button-link {
+    text-decoration: none;
+    color: #afbb85;
+    position: relative;
+  }
+  
+  .button-link:after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #4A5034;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .button-link:hover:after {
+    visibility: visible;
+    transform: scaleX(1);
+  }
