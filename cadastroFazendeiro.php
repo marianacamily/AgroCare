@@ -9,7 +9,7 @@
     <link rel="stylesheet"  type="text/css" href="style/cadastroFazenda.css">
 </head>
 <header>
-   <img src="logo.png" width="180px">
+   <img src="img/Logo1.png" width="180px">
 </header>
 <body>
 <?php
@@ -22,7 +22,7 @@
         $telefone = $_POST["telefone_Fazendeiro"];
         $senha = $_POST["senha_Fazendeiro"];
 
-        // Exemplo de inserção no banco de dados usando mysqli
+        
         $servername = "localhost";
         $username = "agrocare";
         $password = " ";
@@ -36,8 +36,9 @@
             die("Falha na conexão: " . $conn->connect_error);
         }
 
-        // Crie a consulta SQL para inserir os dados na tabela de funcionários
-        $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha')";   
+        // Crie a consulta SQL para inserir os dados na tabela de fazendeiro
+        $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) 
+        VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha')";   
 
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
@@ -47,11 +48,7 @@
         }
         mysqli_close($conn);
 }
-//if (mysqli_query($conn, $sql)) {
-//    echo "Dados cadastrados com sucesso!";
-//} else {
-//    echo "Erro ao cadastrar os dados: " . mysqli_error($conn);
-//}
+
 ?>
     <div class="cadastro">
    
@@ -61,7 +58,7 @@
             <input type="text" id="nome" name="nome_Fazendeiro" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
             <input type="text" name="cpf_Fazendeiro" size="20" maxlength="20" required><br><br>
-            <!--adicionado input de nome da fazendo-->
+            <!--adicionado input de nome da fazenda-->
             <label>Nome da Fazenda:</label>
             <input type="text" id="nome_Fazenda" name="nome_fazenda" size="20" maxlength="20" ><br><br>
 
