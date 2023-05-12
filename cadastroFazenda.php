@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Fazenda</title>
-    <link rel="stylesheet"  type="text/css" href="cadastroFazenda.css">
+    <link rel="stylesheet"  type="text/css" href="style/cadastroFazenda.css">
 </head>
 <header>
-   <img src="img/Logo1.png" width="150px">
+   <img src="img/Logo1.png" width="180px">
 </header>
 <body>
 <?php
