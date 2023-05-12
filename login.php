@@ -8,71 +8,79 @@
     <title>Login Agrocare</title>
 </head>
 <body>
-    <?php
+<?php
     if(isset($_POST['submit'])){
                     // Verificar o valor do input radio recebido
         $funcao = $_POST['funcao'];
         $email = $_POST['usuario'];
         $senha = $_POST['senha'];
 
-        // faça a conexão com o banco de dados
-        $connectbd = mysqli_connect('localhost', 'agrocare', '', 'agrocarefinal') or die(mysqli_error($connectbd));
-        // Verifique se ocorreu algum erro na conexão
-        if ($connectbd->connect_error) {
-            die("Erro na conexão: " . $connectbd->connect_error);
+
+        $servername = "localhost";
+        $username = "agrocare";
+        $password = " ";
+        $database = "agrocarefinal";
+
+        // Crie uma conexão com o banco de dados
+        $conn = new mysqli($servername, $username, $password, $database);
+    
+        // Verifique se ocorreu um erro na conexão
+        if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
         }
 
         // Realizar a consulta no banco de dados correspondente
-        if ($funcao === 'fazendeiro') {
-            // Consulta na tabela dos fazendeiro
+        if ($funcao === 'Fazendeiro') {
+            // Consulta na tabela dos Fazendeiro
             
                 // Crie a consulta SQL
-            $sql = "SELECT * FROM [Fazendeiro] WHERE email_Fazendeiro = '$email' AND senha_Fazendeiro = '$senha'";
+            $sql = "SELECT * FROM Fazendeiro WHERE email_Fazendeiro = '$email' AND senha_Fazendeiro = '$senha'";
                 // Executa a consulta
-            $resultado = $connectbd->query($sql);
+            $resultado = $conn->query($sql);
                 
                 // Verifica se houve um erro na consulta
             if (!$resultado) {
-                die("Erro na consulta: " . $connectbd->error);
+                die("Erro na consulta: " . $conn->error);
             }
 
-            } elseif ($funcao === 'veterinario') {
+            } elseif ($funcao === 'Veterinário') {
             // Consulta na tabela dos veterinários
                 // Crie a consulta SQL
-                $sql = "SELECT * FROM [Veterinário] WHERE email_Vet = '$email' AND senha_Vet = '$senha'";
+                $sql = "SELECT * FROM Veterinário WHERE email_Vet = '$email' AND senha_Vet = '$senha'";
                 // Executa a consulta
-                $resultado = $connectbd->query($sql);
+                $resultado = $conn->query($sql);
                             
                 // Verifica se houve um erro na consulta
                 if (!$resultado) {
-                die("Erro na consulta: " . $connectbd->error);
+                die("Erro na consulta: " . $conn->error);
                 }
-            } elseif ($funcao === 'auxiliar') {
+            } elseif ($funcao === 'Funcionário') {
             // Consulta na tabela dos auxiliar
                 // Crie a consulta SQL
-                $sql = "SELECT * FROM [Funcionário] WHERE email_Func = '$email' AND senha_Func = '$senha'";
+                $sql = "SELECT * FROM Funcionário WHERE email_Func = '$email' AND senha_Func = '$senha'";
                 // Executa a consulta
-                $resultado = $connectbd->query($sql);
+                $resultado = $conn->query($sql);
+                echo"login bem-sucedido!";
                             
                 // Verifica se houve um erro na consulta
                 if (!$resultado) {
-                die("Erro na consulta: " . $connectbd->error);
+                die("Erro na consulta: " . $conn->error);
                 }
         }
-        // Verifica se houve um erro na consulta
-        if (!$resultado) {
-            die("Erro na consulta: " . $connectbd->error);
+        if (!$resultado === false) {
+            die("erro na consulta: " . $conn->error);
         }
 
         // Verifica o número de linhas retornadas pelo resultado da consulta
         if (mysqli_num_rows($resultado) == 1) {
-            //login bem-sucedido
-            echo"login bem-sucedido!";
 
             // Iniciar a sessão (se já não estiver iniciada)
             session_start();
-
+            $_SESSION['usuario'] = $email;
             // Definir variáveis de sessão para armazenar informações do usuário logado
+            header('Location: CadastroFazendeiro/index.php');
+            exit;
+
             $_SESSION['usuario'] = $email;
 
         } else {
@@ -80,7 +88,7 @@
             echo "combinacao de email e senha invalida.!";
         }
 
-        $connectbd->close();
+        $conn->close();
     }
     ?>
 
@@ -95,11 +103,11 @@
                     <h1>LOGIN</h1>
                     <p>Escolha sua função:</p>
                     <div style="width: 350px;">
-                        <input type="radio" id="fazendeiro" name="funcao" value="fazendeiro" required>
-                        <label for="fazendeiro">Fazendeiro</label>
-                        <input type="radio" id="veterinario" name="funcao" value="veterinario" required>
-                        <label for="veterinario">Veterinário</label>
-                        <input type="radio" id="funcionario" name="funcao" value="funcionario" required>
+                        <input type="radio" id="Fazendeiro" name="funcao" value="Fazendeiro" required>
+                        <label for="Fazendeiro">Fazendeiro</label>
+                        <input type="radio" id="Veterinário" name="funcao" value="Veterinário" required>
+                        <label for="Veterinário">Veterinário</label>
+                        <input type="radio" id="Funcionário" name="funcao" value="Funcionário" required>
                         <label for="auxiliar">Funcinário</label>
                     </div>
                     <div class="texto-login">
