@@ -35,11 +35,7 @@
         $database = "agrocarefinal";
 
         // Crie a conexão com o banco de dados
-<<<<<<< Updated upstream
-        $conn = new mysqli("localhost", "agrocare", "", "agrocarefinal");
-=======
         $conn = new mysqli("localhost", "agrocare", " ", "agrocarefinal");
->>>>>>> Stashed changes
 
         // Verifique se ocorreu um erro na conexão
         if ($conn->connect_error) {
@@ -47,11 +43,7 @@
         }
 
         // Crie a consulta SQL para inserir os dados na tabela de funcionários
-<<<<<<< Updated upstream
-        $sql = "INSERT INTO Funcionário (nome_Func, email_Func, cpf_Func, dt_nascFunc, telefone_Func, senha_Func) VALUES ('$nome', '$email', '$cpf', '$dt_nasc', '$telefone', '$senha')";   
-=======
         $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha')";   
->>>>>>> Stashed changes
 
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
@@ -91,11 +83,7 @@
             <input type="password" required><br><br>
 
             <div class="btns">
-<<<<<<< Updated upstream
-                <a href="#"><button id="btn-cancelar" class="btn-cancelar">Cancelar</button></a>
-=======
                 <a href="cadastroFuncionario.php"><button id="btn-cancelar" class="btn-cancelar">Cancelar</button></a>
->>>>>>> Stashed changes
                 <button onclick="gerarEmail()" class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button>
             </div>
         </form>
