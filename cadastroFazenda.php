@@ -42,6 +42,7 @@
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
             echo "Dados cadastrados com sucesso!";
+            echo "<script>window.location.href = 'cadastroFazendeiro.php';</script>";
         } else {
             echo "Erro ao cadastrar os dados: " . $conn->error;
         }
@@ -53,19 +54,19 @@
         <p><h1>Cadastrar Fazenda</h1></p><br>
         <form action="cadastroFazenda.php" method="POST">
             <label>Nome da Fazenda:</label>
-            <input type="text" name= "nome_Fazenda" size="20" maxlength="20">
+            <input type="text" name= "nome_Fazenda" size="20" maxlength="20" required>
             <label>Endereço:</label>
-            <input type="text" name= "endereço_Fazenda" size="20" maxlength="20"><br>
+            <input type="text" name= "endereço_Fazenda" size="20" maxlength="20" required><br>
             <label>Bairro:</label>
             <input type="text" name= "bairro_Fazenda">
             <label>Número:</label>
-            <input type="text" name= "numero_Fazenda" size="20" maxlength="20"><br>
+            <input type="text" name= "numero_Fazenda" size="20" maxlength="20" required><br>
             <label>Cidade:</label>
-            <input type="text" name= "cidade_Fazenda" size="20" maxlength="20">
+            <input type="text" name= "cidade_Fazenda" size="20" maxlength="20" required> 
             <label>CEP:</label>
-            <input type="text" name= "cep_Fazenda" size="20" maxlength="20"><br>
+            <input type="text" name= "cep_Fazenda" size="20" maxlength="20" required><br>
             <label>Estado:</label>
-            <input type="text" name="estado_Fazenda"size="20" maxlength="20"><br><br>
+            <input type="text" name="estado_Fazenda"size="20" maxlength="20" required><br><br>
             <div class="btns">
                 <button onclick="limparCampos()" class="btn-cancelar">Cancelar</button>
                 <a href="cadastroFazendeiro.php"><button class="btn-cadastrar">Cadastrar</button></a>
