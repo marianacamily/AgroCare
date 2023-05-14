@@ -62,7 +62,7 @@
         // Verifica as exceções
         if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
             echo '<script>alert("Preencha os campos corretamente!");</script>';
-            echo "<script>window.location.href = 'login.php';</script>";
+            echo "<script>window.location.href = 'cadastroFuncionario.php';</script>";
         } else {
             $partesNome = explode(" ", $nome_Fun);
             $primeiroNome = $partesNome[0];

@@ -64,7 +64,7 @@
         // Verifica as exceções
         if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
             
-            echo "<script>window.location.href = 'login.php';</script>";
+            echo "<script>window.location.href = 'cadastroVeterinario.php';</script>";
             echo '<script>alert("Preencha os campos corretamente!");</script>';
         } else {
             $partesNome = explode(" ", $nome_Vet);
