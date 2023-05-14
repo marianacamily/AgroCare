@@ -67,8 +67,8 @@
             $primeiroNome = $partesNome[0];
             $ultimoNome = end($partesNome);
             $email = $primeiroNome . '.' . $ultimoNome . '@' . $nome_Fazenda . '.com.br';
-            $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro, email_Fazendeiro) 
-            VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha', '$email')";
+            $sql = "INSERT INTO Funcionário (nome_Func, cpf_Func, dt_nascFunc, telefone_Func, senha_Func, email_Func) 
+            VALUES ('$nome_Fun', '$cpf_Fun', '$dt_nasc_Fun', '$telefone_Fun', '$senha_Fun', '$email')";
             $fk = "UPDATE Fazenda SET FK_cpf_Func = '$cpf_Fun' WHERE nome_Fazenda = '$nome_Fazenda'";
             echo "<script>window.location.href = 'cadastroFazenda.php';</script>";
         }

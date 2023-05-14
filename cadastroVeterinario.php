@@ -69,8 +69,8 @@
             $primeiroNome = $partesNome[0];
             $ultimoNome = end($partesNome);
             $email = $primeiroNome . '.' . $ultimoNome . '@' . $nome_Fazenda . '.com.br';
-            $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro, email_Fazendeiro) 
-            VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha', '$email')";
+            $sql = "INSERT INTO Veterinário (nome_Vet, cpf_Vet, dt_nascVet, telefone_Vet, senha_Vet, email_Vet) 
+            VALUES ('$nome_Vet', '$cpf_Vet', '$dt_nasc_Vet', '$telefone_Vet', '$senha_Vet', '$email')";
             $fk = "UPDATE Fazenda SET FK_cpf_Vet = '$cpf_Vet' WHERE nome_Fazenda = '$nome_Fazenda'";
             echo "<script>window.location.href = 'cadastroFuncionario.php';</script>";
         }
