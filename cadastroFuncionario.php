@@ -21,6 +21,7 @@
         $telefone_Fun = $_POST["telefone_Func"];
         $senha_Fun = $_POST["senha_Func"];
         $nome_Fazenda = $_SESSION['nome_Fazenda'];
+        $senha_teste = $_POST["senha_teste"];
         function formatarCPF($cpf_Fun) {
             return preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{2})$/', '$1.$2.$3-$4', $cpf_Fun);
         }
@@ -98,10 +99,10 @@
             <input type="text" name="telefone_Func" placeholder="(XX) XXXXX - XXXX" pattern="[0-9]{11}" required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha_Func" required>
+            <input type="password" name="senha_teste" required>
 
             <label>Confirmar senha: </label>
-            <input type="password" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
+            <input type="password" name="senha_Func" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
 
             <div class="btns">
                 <button onclick="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
@@ -113,5 +114,7 @@
             </footer>
             
         </form>
+
+        <script src="scripts/script.js"></script>
 </body>
 </html>

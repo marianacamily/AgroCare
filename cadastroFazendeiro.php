@@ -21,6 +21,7 @@
         $dt_nasc = $_POST["dt_nascFazendeiro"];
         $telefone = $_POST["telefone_Fazendeiro"];
         $senha = $_POST["senha_Fazendeiro"];
+        $senha_teste = $_POST["senha_teste"];
         $nome_Fazenda = $_SESSION['nome_Fazenda'];
         function formatarCPF($cpf) {
             return preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{2})$/', '$1.$2.$3-$4', $cpf);
@@ -62,7 +63,7 @@
         // Verifica as exceções
         if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
             echo '<script>alert("Preencha os campos corretamente!");</script>';
-            echo "<script>window.location.href = 'login.php';</script>";
+            echo "<script>window.location.href = 'cadastroFazendeiro.php';</script>";
         } else {
             $partesNome = explode(" ", $nome);
             $primeiroNome = $partesNome[0];
@@ -87,7 +88,7 @@
     <div class="cadastro">
    
         <p><h1>Cadastrar Fazendeiro</h1></p><br>
-        <form action="cadastroFazendeiro.php" method="POST">
+        <form action="cadastroFazendeiro.php" method="POST" id="cadastroForm">
             <label>Nome:</label>             <!--adicionado atributo pattern para regex-->
             <input type="text" id="nome" name="nome_Fazendeiro" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
@@ -100,10 +101,10 @@
             <input type="text" name="telefone_Fazendeiro" placeholder="(XX) XXXXX - XXXX" pattern="[0-9]{11}"  required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha_Fazendeiro" required>
+            <input type="password" name="senha_teste" required>
 
             <label>Confirmar senha: </label>
-            <input type="password" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
+            <input type="password" name="senha_Fazendeiro" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
 
             <div class="btns">
                 <button onclick= "limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
@@ -124,66 +125,7 @@
 
     <script src="scripts/script.js">
 
-        function gerarEmail() { //funcao que gera email
-            var nomeCompleto = document.getElementById("nome").value;
-            var primeiroNome = nomeCompleto.split(" ")[0];
-            var ultimoNome = nomeCompleto.split(" ").pop();
-            var nomeFazenda = document.getElementById("nome_fazenda").value;
-            var email = primeiroNome + "." + ultimoNome + "@" + nomeFazenda + ".com.br";
-            document.getElementById("resultado").innerHTML = "O endereço de e-mail é: " + email;
-            alert("O endereço de e-mail é: " + email);
-        }
 
-        function validarFormulario() { //funcao q sinaliza erros nos campos de cadastro
-            // Pega os valores dos inputs
-            var nome = document.getElementById("nome").value;
-            var cpf = document.getElementById("cpf").value;
-            var nomeFazenda = document.getElementById("nome_fazenda").value;
-            var dataNascimento = document.getElementById("date_nascimento").value;
-            var telefone = document.getElementById("telefone").value;
-            var senha = document.getElementById("senha").value;
-
-            // Verifica se o campo nome não está vazio e tem pelo menos 3 caracteres
-            if (nome == "" || nome.length < 3) {
-                alert("Por favor, digite um nome válido.");
-                return false;
-            }
-
-            // Verifica se o CPF tem 11 dígitos
-            if (cpf == "" || cpf.length != 11) {
-                alert("Por favor, digite um CPF válido.");
-                return false;
-            }
-
-            // Verifica se o campo nome da fazenda não está vazio e tem pelo menos 3 caracteres
-            if (nomeFazenda == "" || nomeFazenda.length < 3) {
-                alert("Por favor, digite um nome de fazenda válido.");
-                return false;
-            }
-
-            // Verifica se a data de nascimento é válida (não está no futuro)
-            var dataAtual = new Date();
-            var dataNasc = new Date(dataNascimento);
-            if (dataNasc >= dataAtual) {
-                alert("Por favor, digite uma data de nascimento válida.");
-                return false;
-            }
-
-            // Verifica se o telefone tem pelo menos 10 dígitos
-            if (telefone == "" || telefone.length < 10) {
-                alert("Por favor, digite um telefone válido.");
-                return false;
-            }
-
-            // Verifica se a senha tem pelo menos 6 caracteres
-            if (senha == "" || senha.length < 6) {
-                alert("Por favor, digite uma senha válida (pelo menos 6 caracteres).");
-                return false;
-            }
-
-            // Se chegou até aqui, significa que todos os campos são válidos
-            return true;
-        }
     </script>
 </body>
 

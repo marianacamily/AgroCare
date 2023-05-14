@@ -119,7 +119,9 @@
                         <label for="senha">Senha:</label>
                         <input type="password" name="senha" placeholder="Digite sua senha" required>
                     </div>
-                    <button id="login-button" class="btn-login" type="submit" name="submit">Entrar</button>
+                    <div class= "center">
+                        <button id="login-button" class="btn" type="submit" name="submit">Entrar</button>
+                    </div>
                     <div>
                         <p>Não possui sua Fazenda cadastrada? Cadastre-se <a href="cadastroFazenda.php" class="button-link" >aqui.</a></p>
                     </div>

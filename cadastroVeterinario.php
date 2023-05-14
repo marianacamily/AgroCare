@@ -21,6 +21,7 @@
         $dt_nasc_Vet = $_POST["dt_nascVet"];
         $telefone_Vet = $_POST["telefone_Vet"];
         $senha_Vet = $_POST["senha_Vet"];
+        $senha_teste = $_POST["senha_teste"];
         $nome_Fazenda = $_SESSION['nome_Fazenda'];
 
         function formatarCPF($cpf_Vet) {
@@ -62,8 +63,9 @@
 
         // Verifica as exceções
         if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
-            echo '<script>alert("Preencha os campos corretamente!");</script>';
+            
             echo "<script>window.location.href = 'login.php';</script>";
+            echo '<script>alert("Preencha os campos corretamente!");</script>';
         } else {
             $partesNome = explode(" ", $nome_Vet);
             $primeiroNome = $partesNome[0];
@@ -100,10 +102,10 @@
             <input type="text" name="telefone_Vet" placeholder="(XX) XXXXX - XXXX" pattern="[0-9]{11}" required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha_Vet" required>
+            <input type="password" name="senha_teste"  required>
 
             <label>Confirmar senha: </label>
-            <input type="password" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
+            <input type="password" name="senha_Vet" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
 
             <div class="btns">
                 <button onclick ="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
