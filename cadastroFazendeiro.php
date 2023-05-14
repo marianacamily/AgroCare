@@ -27,7 +27,7 @@
         }
         
         function formatarTelefone($telefone) {
-            return preg_replace('/^(\d{2})(\d{4})(\d{4})$/', '$1 $2-$3', $telefone);
+            return preg_replace('/^(\d{2})(\d{1})(\d{4})(\d{4})$/', '$1 $2 $3-$4', $telefone);
         }
         
         function validarSenha($senha) {
@@ -91,22 +91,19 @@
             <label>Nome:</label>             <!--adicionado atributo pattern para regex-->
             <input type="text" id="nome" name="nome_Fazendeiro" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
-            <input type="text" name="cpf_Fazendeiro" size="20" maxlength="20" required><br><br>
-            <!--adicionado input de nome da fazenda-->
-            <label>Nome da Fazenda:</label>
-            <input type="text" id="nome_Fazenda" name="nome_fazenda" size="20" maxlength="20" ><br><br>
+            <input type="text" name="cpf_Fazendeiro" size="20" maxlength="20" pattern="[0-9]{11}" required ><br><br>
 
             <label>Data de Nascimento:</label>
             <input type="date" name="dt_nascFazendeiro" size="20" maxlength="20" required>
 
             <label>Telefone:</label>            <!--adicionado atributo pattern para regex-->
-            <input type="text" name="telefone_Fazendeiro" placeholder="(XX) XXXXX - XXXX" pattern="^\d{4}-\d{3}-\d{4}$" required><br><br>
+            <input type="text" name="telefone_Fazendeiro" placeholder="(XX) XXXXX - XXXX" pattern="[0-9]{11}"  required><br><br>
 
             <label>Senha:</label>
             <input type="password" name="senha_Fazendeiro" required>
 
             <label>Confirmar senha: </label>
-            <input type="password" required><br><br>
+            <input type="password" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
 
             <div class="btns">
                 <button onclick= "limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>

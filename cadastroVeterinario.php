@@ -91,19 +91,19 @@
             <label>Nome Completo:</label>        
             <input type="text" id="nome" name="nome_Vet" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
-            <input type="text" name="cpf_Vet" size="20" maxlength="20" required><br><br>
+            <input type="text" name="cpf_Vet" size="20" maxlength="20" pattern="[0-9]{11}" required><br><br>
             
             <label>Data de Nascimento:</label>
             <input type="date" name="dt_nascVet" size="20" maxlength="20" required>
 
             <label>Telefone:</label>            
-            <input type="text" name="telefone_Vet" placeholder="(XX) XXXXX - XXXX" pattern="^\d{4}-\d{3}-\d{4}$" required><br><br>
+            <input type="text" name="telefone_Vet" placeholder="(XX) XXXXX - XXXX" pattern="[0-9]{11}" required><br><br>
 
             <label>Senha:</label>
             <input type="password" name="senha_Vet" required>
 
             <label>Confirmar senha: </label>
-            <input type="password" required><br><br>
+            <input type="password" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
 
             <div class="btns">
                 <button onclick ="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>

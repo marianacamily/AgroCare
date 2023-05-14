@@ -90,18 +90,18 @@
             <label>Nome Completo:</label>             <!--adicionado atributo pattern para regex-->
             <input type="text" id="nome" name="nome_Func" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
-            <input type="text" name="cpf_Func" size="20" maxlength="20" required><br><br>
+            <input type="text" name="cpf_Func" size="20" maxlength="20" pattern="[0-9]{11}" required><br><br>
             <label>Data de Nascimento:</label>
             <input type="date" name="dt_nascFunc" size="20" maxlength="20" required>
 
             <label>Telefone:</label>            <!--adicionado atributo pattern para regex-->
-            <input type="text" name="telefone_Func" placeholder="(XX) XXXXX - XXXX" pattern="^\d{4}-\d{3}-\d{4}$" required><br><br>
+            <input type="text" name="telefone_Func" placeholder="(XX) XXXXX - XXXX" pattern="[0-9]{11}" required><br><br>
 
             <label>Senha:</label>
             <input type="password" name="senha_Func" required>
 
             <label>Confirmar senha: </label>
-            <input type="password" required><br><br>
+            <input type="password" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
 
             <div class="btns">
                 <button onclick="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
