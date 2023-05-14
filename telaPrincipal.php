@@ -14,15 +14,12 @@
         <table class="container">
             <thead>
                 <tr>
-                    <th><h1>ID</h1></th>
-                    <th><h1>Valor</h1></th>
+                    <th>ID</th>
+                    <th>nome</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Teste</td>
-                </tr>
-                <!--
+                
                 <?php
                     // Conexão com o banco de dados 
                     $servername = "localhost";   
@@ -58,7 +55,7 @@
                     // Fechamento da conexão com o banco de dados
                     $conn->close();
                 ?>
-                -->
+                
             </tbody>
         </table>
     </body>

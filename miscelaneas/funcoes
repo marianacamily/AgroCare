@@ -1,0 +1,18 @@
+           
+           
+           
+           
+           TENTATIVA DE GERAR EMAIL SEM SESSAO
+           if ($result !== false && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $primeiroNome = explode(" ", $row["nome_Fazendeiro"])[0];
+                    $ultimoNome = explode(" ", $row["nome_fazendeiro"])[1];
+                    $nomeFazenda = $row["nome_Fazenda"];
+
+                    $email = $primeiroNome . "." . $ultimoNome . "@" . $nomeFazenda . ".com.br";
+
+                    echo "Email: " . $email . "<br>";
+                }
+            }else {
+                echo "nenhum resultado encontrado.";
+            }

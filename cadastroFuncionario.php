@@ -13,15 +13,39 @@
 <body>
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+        session_start();
         // Recebe os dados do formulário
         $nome_Fun = $_POST["nome_Func"];
         $cpf_Fun = $_POST["cpf_Func"];
         $dt_nasc_Fun = $_POST["dt_nascFunc"];
         $telefone_Fun = $_POST["telefone_Func"];
         $senha_Fun = $_POST["senha_Func"];
-
+        $nome_Fazenda = $_SESSION['nome_Fazenda'];
+        function formatarCPF($cpf_Fun) {
+            return preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{2})$/', '$1.$2.$3-$4', $cpf_Fun);
+        }
         
+        function formatarTelefone($telefone_Fun) {
+            return preg_replace('/^(\d{2})(\d{4})(\d{4})$/', '$1 $2-$3', $telefone_Fun);
+        }
+        
+        function validarSenha($senha_Fun) {
+            return preg_match('/^(?=.*[!@#$%^&*])(.{8,})$/', $senha_Fun);
+        }
+        
+        $cpfFormatado = formatarCPF($cpf_Fun);
+        echo "CPF formatado: " . $cpfFormatado . "\n";
+        
+        $telefoneFormatado = formatarTelefone($telefone_Fun);
+        echo "Telefone formatado: " . $telefoneFormatado . "\n";
+        
+        $senhaValida = validarSenha($senha_Fun);
+        echo "Senha válida? " . ($senhaValida ? 'Sim' : 'Não') . "\n";
+        // Aplica as formatações
+        $cpfFormatado = formatarCPF($cpf_Fun);
+        $telefoneFormatado = formatarTelefone($telefone_Fun);
+
+
         $servername = "localhost";
         $username = "agrocare";
         $password = " ";
@@ -34,10 +58,20 @@
         if ($conn->connect_error) {
             die("Falha na conexão: " . $conn->connect_error);
         }
-
-        // Crie a consulta SQL para inserir os dados na tabela de funcionário
-        $sql = "INSERT INTO Funcionário (nome_Func, cpf_Func, dt_nascFunc, telefone_Func, senha_Func) 
-        VALUES ('$nome_Fun', '$cpf_Fun', '$dt_nasc_Fun', '$telefone_Fun', '$senha_Fun')";   
+        // Verifica as exceções
+        if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
+            echo '<script>alert("Preencha os campos corretamente!");</script>';
+            echo "<script>window.location.href = 'login.php';</script>";
+        } else {
+            $partesNome = explode(" ", $nome_Fun);
+            $primeiroNome = $partesNome[0];
+            $ultimoNome = end($partesNome);
+            $email = $primeiroNome . '.' . $ultimoNome . '@' . $nome_Fazenda . '.com.br';
+            $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro, email_Fazendeiro) 
+            VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha', '$email')";
+            $fk = "UPDATE Fazenda SET FK_cpf_Func = '$cpf_Fun' WHERE nome_Fazenda = '$nome_Fazenda'";
+            echo "<script>window.location.href = 'cadastroFazenda.php';</script>";
+        }
 
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
@@ -70,8 +104,8 @@
             <input type="password" required><br><br>
 
             <div class="btns">
-                <a href="../Login/index.html"><button id="btn-cancelar" class="btn-cancelar">Cancelar</button></a>
-                <button onclick="gerarEmail()" class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button>
+                <button onclick="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
+                <a href="login.php"><button  class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
             </div>
             <footer>
                 *Ao clicar  em Cadastrar, todas as informações digitadas<br>

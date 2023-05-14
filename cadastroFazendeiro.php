@@ -14,15 +14,38 @@
 <body>
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+        session_start();
         // Recebe os dados do formulário
         $nome = $_POST["nome_Fazendeiro"];
         $cpf = $_POST["cpf_Fazendeiro"];
         $dt_nasc = $_POST["dt_nascFazendeiro"];
         $telefone = $_POST["telefone_Fazendeiro"];
         $senha = $_POST["senha_Fazendeiro"];
-
+        $nome_Fazenda = $_SESSION['nome_Fazenda'];
+        function formatarCPF($cpf) {
+            return preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{2})$/', '$1.$2.$3-$4', $cpf);
+        }
         
+        function formatarTelefone($telefone) {
+            return preg_replace('/^(\d{2})(\d{4})(\d{4})$/', '$1 $2-$3', $telefone);
+        }
+        
+        function validarSenha($senha) {
+            return preg_match('/^(?=.*[!@#$%^&*])(.{8,})$/', $senha);
+        }
+        
+        $cpfFormatado = formatarCPF($cpf);
+        echo "CPF formatado: " . $cpfFormatado . "\n";
+        
+        $telefoneFormatado = formatarTelefone($telefone);
+        echo "Telefone formatado: " . $telefoneFormatado . "\n";
+        
+        $senhaValida = validarSenha($senha);
+        echo "Senha válida? " . ($senhaValida ? 'Sim' : 'Não') . "\n";
+        // Aplica as formatações
+        $cpfFormatado = formatarCPF($cpf);
+        $telefoneFormatado = formatarTelefone($telefone);
+
         $servername = "localhost";
         $username = "agrocare";
         $password = " ";
@@ -36,10 +59,21 @@
             die("Falha na conexão: " . $conn->connect_error);
         }
 
-        // Crie a consulta SQL para inserir os dados na tabela de fazendeiro
-        $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro) 
-        VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha')";   
+        // Verifica as exceções
+        if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
+            echo '<script>alert("Preencha os campos corretamente!");</script>';
+            echo "<script>window.location.href = 'login.php';</script>";
+        } else {
+            $partesNome = explode(" ", $nome);
+            $primeiroNome = $partesNome[0];
+            $ultimoNome = end($partesNome);
+            $email = $primeiroNome . '.' . $ultimoNome . '@' . $nome_Fazenda . '.com.br';
+            $sql = "INSERT INTO Fazendeiro (nome_Fazendeiro, cpf_Fazendeiro, dt_nascFazendeiro, telefone_Fazendeiro, senha_Fazendeiro, email_Fazendeiro) 
+            VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha', '$email')";
+            $fk = "UPDATE Fazenda SET FK_cpf_Fazendeiro = '$cpf' WHERE nome_Fazenda = '$nome_Fazenda'";
 
+            echo "<script>window.location.href = 'cadastroVeterinario.php';</script>";
+        }
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
             echo "Dados cadastrados com sucesso!";
@@ -75,8 +109,8 @@
             <input type="password" required><br><br>
 
             <div class="btns">
-                <a href="login.php"><button id="btn-cancelar" class="btn-cancelar">Cancelar</button></a>
-                <button onclick="gerarEmail()" class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button>
+                <button onclick= "limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
+                <a href="cadastroVeterinario.php"><button class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
             </div>
         </form>
         <div>
@@ -91,7 +125,7 @@
         </div>
     </div>
 
-    <script>
+    <script src="scripts/script.js">
 
         function gerarEmail() { //funcao que gera email
             var nomeCompleto = document.getElementById("nome").value;
