@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta lang="pt-br">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<<< Updated upstream:login.php
-    <link rel="stylesheet" href="/style/style_login.css">
-========
     <link rel="stylesheet" href="style/style_login.css">
->>>>>>>> Stashed changes:index.php
     <title>Login Agrocare</title>
 </head>
 <body>
 <?php
     if(isset($_POST['submit'])){
+        session_start();
                     // Verificar o valor do input radio recebido
-        $funcao = $_POST['funcao'];
+        $funcao = $_POST['função'];
         $email = $_POST['usuario'];
         $senha = $_POST['senha'];
 
@@ -71,9 +68,6 @@
                 die("Erro na consulta: " . $conn->error);
                 }
         }
-        if (!$resultado === false) {
-            die("erro na consulta: " . $conn->error);
-        }
 
         // Verifica o número de linhas retornadas pelo resultado da consulta
         if (mysqli_num_rows($resultado) == 1) {
@@ -81,8 +75,11 @@
             // Iniciar a sessão (se já não estiver iniciada)
             session_start();
             $_SESSION['usuario'] = $email;
+
+            // Dados validados
+            echo "Dados validados! Redirecionando...";
             // Definir variáveis de sessão para armazenar informações do usuário logado
-            header('Location: CadastroFazendeiro/index.php');
+            echo "<script>window.location.href = 'telaPrincipal.php';</script>";
             exit;
 
             $_SESSION['usuario'] = $email;
@@ -95,40 +92,24 @@
         $conn->close();
     }
 ?>
+
 <div class="main-login"> <!-- div de todo o login -->
         <div class="left-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
-<<<<<<<< Updated upstream:login.php
-            <img src="/img/agrocare.png" class="imagem1" alt="Logo agrocare branca">
-            <img src="/img/vaca.png" class="imagem2" alt="Vaca logo agrocare branca">
-        </div>
-        <div class="right-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
-                <div class="card-login">
-========
             <img src="img/agrocare.png" class="imagem1" alt="Logo agrocare branca">
             <img src="img/vaca.png" class="imagem2" alt="Vaca logo agrocare branca">
         </div>
         <div class="right-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
             <div class="card-login">
->>>>>>>> Stashed changes:index.php
-                <form action="index.php" method = "POST">
+                <form action="login.php" method = "POST" class= "form col" id= "form-el">
                     <h1>LOGIN</h1>
                     <p>Escolha sua função:</p>
-                    <div style="width: 350px;">
-<<<<<<<< Updated upstream:login.php
-                        <input type="radio" id="Fazendeiro" name="funcao" value="Fazendeiro" required>
+                    <div >
+                        <input type="radio" id="Fazendeiro" name="função" value="Fazendeiro" required>
                         <label for="Fazendeiro">Fazendeiro</label>
-                        <input type="radio" id="Veterinário" name="funcao" value="Veterinário" required>
+                        <input type="radio" id="Veterinário" name="função" value="Veterinário" required>
                         <label for="Veterinário">Veterinário</label>
-                        <input type="radio" id="Funcionário" name="funcao" value="Funcionário" required>
-                        <label for="auxiliar">Funcinário</label>
-========
-                        <input type="radio" id="fazendeiro" name="função" value="fazendeiro" required>
-                        <label for="fazendeiro">Fazendeiro</label>
-                        <input type="radio" id="veterinario" name="função" value="veterinario" required>
-                        <label for="veterinario">Veterinário</label>
-                        <input type="radio" id="auxiliar" name="função" value="auxiliar" required>
-                        <label for="auxiliar">Auxiliar</label>
->>>>>>>> Stashed changes:index.php
+                        <input type="radio" id="Funcionário" name="função" value="Funcionário" required>
+                        <label for="Funcionário">Funcionário</label>
                     </div>
                     <div class="texto-login">
                         <label for="usuario">Email:</label>
@@ -138,25 +119,44 @@
                         <label for="senha">Senha:</label>
                         <input type="password" name="senha" placeholder="Digite sua senha" required>
                     </div>
-<<<<<<<< Updated upstream:login.php
-                    <a href=".#"><button id="login-button" class="btn-login" type="submit" name="submit">Entrar</button></a>
-                    <div>
-                        <p>Não possui sua Fazenda cadastrada? Cadastre-se <a href="/cadastroFazendeiro.php" class="button-link" >aqui.</a></p>
+                    <div class= "center">
+                        <button id="login-button" class="btn" type="submit" name="submit">Entrar</button> 
                     </div>
-                </form>
-                </div>
-========
-                    <a href="#"><button id="login-button" class="btn-login" type="submit" name="submit">Entrar</button></a>
                     <div>
-                        <p>Não possui sua Fazenda cadastrada? Cadastre-se <a href="cadastroFazendeiro.php" class="button-link" >aqui.</a></p>
+                        <p>Não possui sua Fazenda cadastrada? Cadastre-se <a href="cadastroFazenda.php" class="button-link" >aqui.</a></p>
                     </div>
                 </form> 
             </div>
->>>>>>>> Stashed changes:index.php
         </div>
     </div>
 
     <script>
+
+
+        const btn = document.querySelector(".btn");
+        const formEl = document.querySelector(".form");
+
+        var position;
+
+
+        btn.addEventListener("mouseover", function () {
+
+        if (!formEl.checkValidity()) {
+            position ? (position = 0) : (position = 100);
+
+            btn.style.transform = `translate(${position}px, 0px)`;
+            btn.style.transition = "all 0.3s ease";
+        } else {
+            return;
+        }
+        });
+
+
+        btn.addEventListener("click", function () {
+        e.preventDefault();
+        alert("welldone");
+        });
+
         const loginButton = document.getElementById('login-button');
         const emailInput = document.getElementById('email');
 

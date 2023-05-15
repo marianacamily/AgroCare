@@ -1,0 +1,37 @@
+           
+           
+           
+           
+           TENTATIVA DE GERAR EMAIL SEM SESSAO
+           if ($result !== false && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $primeiroNome = explode(" ", $row["nome_Fazendeiro"])[0];
+                    $ultimoNome = explode(" ", $row["nome_fazendeiro"])[1];
+                    $nomeFazenda = $row["nome_Fazenda"];
+
+                    $email = $primeiroNome . "." . $ultimoNome . "@" . $nomeFazenda . ".com.br";
+
+                    echo "Email: " . $email . "<br>";
+                }
+            }else {
+                echo "nenhum resultado encontrado.";
+            }
+
+            
+            $query = "SELECT * FROM Funcionário UNION SELECT * FROM Veterinário UNION SELECT * FROM Fazendeiro";
+        $myquery = $conx->query($query);
+        if($myquery && $myquery->num_rows > 0) {
+            $row = $myquery->fetch_assoc();
+            $email = $row ['email'];
+            echo "<script>
+            window.addEventListener('DOMContentLoaded', function() {
+              var email = '$email';
+              var popupWindow = window.open('', '_blank');
+              popupWindow.document.write('<h2>Dados Cadastrais</h2>');
+              popupWindow.document.write('<p>Email: ' + email + '</p>');
+            });
+            </script>";
+        } else {
+            // Caso não tenha encontrado o usuário, exiba uma mensagem de erro ou trate o caso adequadamente
+            echo "Usuário não encontrado.";
+        }
