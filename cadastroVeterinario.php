@@ -91,18 +91,18 @@
         <p><h1>Cadastrar Veterinário</h1></p><br>
         <form action="cadastroVeterinario.php" method="post">
             <label>Nome Completo:</label>        
-            <input type="text" id="nome" name="nome_Vet" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
+            <input type="text" id="nome" name="nome_Vet" size="20" maxlength="20" placeholder="Digite seu nome completo" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
-            <input type="text" name="cpf_Vet" size="20" maxlength="20" pattern="[0-9]{11}" required><br><br>
+            <input type="text" name="cpf_Vet" size="20" maxlength="20" placeholder="Digite apenas os números" pattern="[0-9]{11}" required><br><br>
             
             <label>Data de Nascimento:</label>
             <input type="date" name="dt_nascVet" size="20" maxlength="20" required>
 
             <label>Telefone:</label>            
-            <input type="text" name="telefone_Vet" placeholder="(XX) XXXXX - XXXX" pattern="[0-9]{11}" required><br><br>
+            <input type="text" name="telefone_Vet" placeholder="Digite apenas os números" pattern="[0-9]{11}" required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha_teste"  required>
+            <input type="password" name="senha_teste" placeholder="8 caracteres, 1 especial" required>
 
             <label>Confirmar senha: </label>
             <input type="password" name="senha_Vet" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>

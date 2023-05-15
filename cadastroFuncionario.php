@@ -89,17 +89,17 @@
         <p><h1>Cadastrar Funcionário da Fazenda</h1></p><br>
         <form action="cadastroFuncionario.php" method="POST">
             <label>Nome Completo:</label>             <!--adicionado atributo pattern para regex-->
-            <input type="text" id="nome" name="nome_Func" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
+            <input type="text" id="nome" name="nome_Func" size="20" maxlength="20" placeholder="Digite seu nome completo" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
-            <input type="text" name="cpf_Func" size="20" maxlength="20" pattern="[0-9]{11}" required><br><br>
+            <input type="text" name="cpf_Func" size="20" maxlength="20" placeholder="Digite apenas os números" pattern="[0-9]{11}" required><br><br>
             <label>Data de Nascimento:</label>
             <input type="date" name="dt_nascFunc" size="20" maxlength="20" required>
 
             <label>Telefone:</label>            <!--adicionado atributo pattern para regex-->
-            <input type="text" name="telefone_Func" placeholder="(XX) XXXXX - XXXX" pattern="[0-9]{11}" required><br><br>
+            <input type="text" name="telefone_Func" placeholder="Digite apenas os números" pattern="[0-9]{11}" required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha_teste" required>
+            <input type="password" name="senha_teste" placeholder="8 caracteres, 1 especial" required>
 
             <label>Confirmar senha: </label>
             <input type="password" name="senha_Func" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
