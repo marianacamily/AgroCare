@@ -62,7 +62,7 @@
         }
 
         // Verifica as exceções
-        if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
+        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida)|| ($senha !== $senha_teste)) {
             
             echo "<script>window.location.href = 'cadastroVeterinario.php';</script>";
             echo '<script>alert("Preencha os campos corretamente!");</script>';

@@ -60,7 +60,7 @@
             die("Falha na conexão: " . $conn->connect_error);
         }
         // Verifica as exceções
-        if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
+        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha !== $senha_teste)) {
             echo '<script>alert("Preencha os campos corretamente!");</script>';
             echo "<script>window.location.href = 'cadastroFuncionario.php';</script>";
         } else {
@@ -87,7 +87,7 @@
     <div class="cadastro">
    
         <p><h1>Cadastrar Funcionário da Fazenda</h1></p><br>
-        <form action="cadastrarFuncionario.php" method="POST">
+        <form action="cadastroFuncionario.php" method="POST">
             <label>Nome Completo:</label>             <!--adicionado atributo pattern para regex-->
             <input type="text" id="nome" name="nome_Func" size="20" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>

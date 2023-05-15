@@ -42,9 +42,10 @@
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
             echo "Dados cadastrados com sucesso!";
+            echo "<script>window.location.href = 'cadastroFazendeiro.php';</script>";
         } else {
             echo "Erro ao cadastrar os dados: " . $conn->error;
-            echo "<script>window.location.href = 'cadastroFazendeiro.php';</script>";
+            echo "<script>window.location.href = 'cadastroFazenda.php';</script>";
         }
         mysqli_close($conn);
 }

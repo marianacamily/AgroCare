@@ -61,7 +61,7 @@
         }
 
         // Verifica as exceções
-        if (!$cpfFormatado || !$telefoneFormatado || !$senhaValida) {
+        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha !== $senha_teste)) {
             echo '<script>alert("Preencha os campos corretamente!");</script>';
             echo "<script>window.location.href = 'cadastroFazendeiro.php';</script>";
         } else {
