@@ -60,7 +60,7 @@
             die("Falha na conexão: " . $conn->connect_error);
         }
         // Verifica as exceções
-        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha !== $senha_teste)) {
+        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha_Func !== $senha_teste)) {
             echo '<script>alert("Preencha os campos corretamente!");</script>';
             echo "<script>window.location.href = 'cadastroFuncionario.php';</script>";
         } else {
