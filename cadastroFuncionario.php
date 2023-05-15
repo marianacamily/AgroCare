@@ -22,12 +22,13 @@
         $senha_Fun = $_POST["senha_Func"];
         $nome_Fazenda = $_SESSION['nome_Fazenda'];
         $senha_teste = $_POST["senha_teste"];
+        $_SESSION["cpf_Func"] = $cpf_Fun;
         function formatarCPF($cpf_Fun) {
             return preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{2})$/', '$1.$2.$3-$4', $cpf_Fun);
         }
         
         function formatarTelefone($telefone_Fun) {
-            return preg_replace('/^(\d{2})(\d{4})(\d{4})$/', '$1 $2-$3', $telefone_Fun);
+            return preg_replace('/^(\d{2})(\d{1})(\d{4})(\d{4})$/', '$1 $2 $3-$4', $telefone_Fun);
         }
         
         function validarSenha($senha_Fun) {
@@ -71,7 +72,7 @@
             $sql = "INSERT INTO Funcionário (nome_Func, cpf_Func, dt_nascFunc, telefone_Func, senha_Func, email_Func) 
             VALUES ('$nome_Fun', '$cpf_Fun', '$dt_nasc_Fun', '$telefone_Fun', '$senha_Fun', '$email')";
             $fk = "UPDATE Fazenda SET FK_cpf_Func = '$cpf_Fun' WHERE nome_Fazenda = '$nome_Fazenda'";
-            echo "<script>window.location.href = 'cadastroFazenda.php';</script>";
+            echo "<script>window.location.href = 'login.php';</script>";
         }
 
         // Execute a consulta

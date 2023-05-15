@@ -100,10 +100,10 @@
         </div>
         <div class="right-login"> <!-- div da parte esquerda do container inteiro de todo o login-->
             <div class="card-login">
-                <form action="login.php" method = "POST">
+                <form action="login.php" method = "POST" class= "form col" id= "form-el">
                     <h1>LOGIN</h1>
                     <p>Escolha sua função:</p>
-                    <div style="width: 350px;">
+                    <div >
                         <input type="radio" id="Fazendeiro" name="função" value="Fazendeiro" required>
                         <label for="Fazendeiro">Fazendeiro</label>
                         <input type="radio" id="Veterinário" name="função" value="Veterinário" required>
@@ -131,6 +131,27 @@
     </div>
 
     <script>
+
+        
+        const btn = document.querySelector(".btn");
+        const formEl = document.querySelector(".form");
+
+        var position;
+
+
+        btn.addEventListener("mouseover", function () {
+
+        if (!formEl.checkValidity()) {
+            position ? (position = 0) : (position = 100);
+
+            btn.style.transform = `translate(${position}px, 0px)`;
+            btn.style.transition = "all 0.3s ease";
+        } else {
+            return;
+        }
+        });
+
+        
         const loginButton = document.getElementById('login-button');
         const emailInput = document.getElementById('email');
 

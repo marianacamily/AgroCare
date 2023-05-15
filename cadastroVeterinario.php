@@ -29,7 +29,7 @@
         }
         
         function formatarTelefone($telefone_Vet) {
-            return preg_replace('/^(\d{2})(\d{4})(\d{4})$/', '$1 $2-$3', $telefone_Vet);
+            return preg_replace('/^(\d{2})(\d{1})(\d{4})(\d{4})$/', '$1 $2 $3-$4', $telefone_Vet);
         }
         
         function validarSenha($senha_Vet) {
@@ -62,10 +62,9 @@
         }
 
         // Verifica as exceções
-        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida)|| ($senha_Vet !== $senha_teste)) {
-            
-            echo "<script>window.location.href = 'cadastroVeterinario.php';</script>";
+        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha_Vet !== $senha_teste)) {
             echo '<script>alert("Preencha os campos corretamente!");</script>';
+            echo "<script>window.location.href = 'cadastroVeterinario.php';</script>";
         } else {
             $partesNome = explode(" ", $nome_Vet);
             $primeiroNome = $partesNome[0];
