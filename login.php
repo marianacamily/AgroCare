@@ -82,7 +82,6 @@
             echo "<script>window.location.href = 'telaPrincipal.php';</script>";
             exit;
 
-            $_SESSION['usuario'] = $email;
 
         } else {
             //combinacao de email e senha invalida
@@ -120,7 +119,7 @@
                         <input type="password" name="senha" placeholder="Digite sua senha" required>
                     </div>
                     <div class= "center">
-                        <button id="login-button" class="btn" type="submit" name="submit">Entrar</button>
+                        <button id="login-button" class="btn" type="submit" name="submit">Entrar</button> 
                     </div>
                     <div>
                         <p>Não possui sua Fazenda cadastrada? Cadastre-se <a href="cadastroFazenda.php" class="button-link" >aqui.</a></p>
@@ -132,7 +131,7 @@
 
     <script>
 
-        
+
         const btn = document.querySelector(".btn");
         const formEl = document.querySelector(".form");
 
@@ -151,7 +150,12 @@
         }
         });
 
-        
+
+        btn.addEventListener("click", function () {
+        e.preventDefault();
+        alert("welldone");
+        });
+
         const loginButton = document.getElementById('login-button');
         const emailInput = document.getElementById('email');
 

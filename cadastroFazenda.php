@@ -55,17 +55,17 @@
         <p><h1>Cadastrar Fazenda</h1></p><br>
         <form action="cadastroFazenda.php" method="POST">
             <label>Nome da Fazenda:</label>
-            <input type="text" name= "nome_Fazenda" size="20" placeholder="Digite o nome da Fazenda" maxlength="20" required>
+            <input type="text" name= "nome_Fazenda" size="20" placeholder="Digite o nome da Fazenda" maxlength="50" required>
             <label>Endereço:</label>
-            <input type="text" name= "endereço_Fazenda" size="20" placeholder="Digite a rua" maxlength="20" required><br>
+            <input type="text" name= "endereço_Fazenda" size="50" placeholder="Digite a rua" maxlength="20" required><br>
             <label>Bairro:</label>
             <input type="text" name= "bairro_Fazenda" placeholder="Digite o bairro" required>
             <label>Número:</label>
-            <input type="text" name= "numero_Fazenda" size="20" placeholder="Digite o número" maxlength="20" required><br>
+            <input type="text" name= "numero_Fazenda" size="10" placeholder="Digite o número" maxlength="20" required><br>
             <label>Cidade:</label>
             <input type="text" name= "cidade_Fazenda" size="20" placeholder="Digite a cidade" maxlength="20" required>
             <label>CEP:</label>
-            <input type="text" name= "cep_Fazenda" size="20" placeholder="Digite apenas os números" maxlength="20" required><br>
+            <input type="text" name= "cep_Fazenda" size="8" placeholder="Digite apenas os números" pattern="[0-9]{8}" maxlength="20" required><br>
             <label>Estado:</label>
             <input type="text" name="estado_Fazenda"size="20" placeholder="Digite o estado" maxlength="20" required><br><br>
             <div class="btns">

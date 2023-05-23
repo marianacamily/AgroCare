@@ -43,9 +43,9 @@ CREATE TABLE 'Fazenda' (
     'cidade_Fazenda' varchar(30) NOT NULL,
     'estado_Fazenda' varchar(15) NOT NULL,
     'cep_Fazenda' varchar(9) NOT NULL,
-	'FK_cpf_Fazendeiro' char(14), FOREIGN KEY ('FK_cpf_Fazendeiro') REFERENCES 'Fazendeiro' ('cpf_Fazendeiro'),
-	'FK_cpf_Vet' char(14), FOREIGN KEY ('FK_cpf_Vet') REFERENCES Veterinário ('cpf_Vet'),
-	'FK_cpf_Func' char(14), FOREIGN KEY ('FK_cpf_Func') REFERENCES Funcionário ('cpf_Func')
+	'FK_cpf_Fazendeiro' char(14) NOT NULL, FOREIGN KEY ('FK_cpf_Fazendeiro') REFERENCES 'Fazendeiro' ('cpf_Fazendeiro'),
+	'FK_cpf_Vet' char(14) NOT NULL, FOREIGN KEY ('FK_cpf_Vet') REFERENCES Veterinário ('cpf_Vet'),
+	'FK_cpf_Func' char(14) NOT NULL, FOREIGN KEY ('FK_cpf_Func') REFERENCES Funcionário ('cpf_Func')
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /* criação da tabela fazenda com as FKs vindas das outras tabelas (os cpfs)*/
 

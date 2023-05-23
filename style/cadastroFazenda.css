@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-header{
-    margin: 20px;
-    width: 70px;
-    text-indent: 10px;
 
-}img{
-    width: 220px;
-}
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -32,13 +25,14 @@ body {
         line-height: 40px;
         font-size: larger;
 }input{
-    font-family: 'Poppins', sans-serif;
-    margin: 20px;
-    margin-left: 8px;
-    border-radius: 30px;
-    background-color: #D9E8A1;
-    border-style: none;
-    text-indent: 10px;
+    width: 250px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    background: #afbb85;
+    font-size: 12pt;
+    outline: none;
+    box-sizing: border-box;
 }select{
     margin: 10px;
     margin-left: 5px;
@@ -49,7 +43,7 @@ body {
 }
 
 .btn-cadastrar {
-    font-size: 14px;
+    font-size: 20px;
     background-color: #7c894c;
     padding: 5px 10px;
     color: rgb(255, 255, 255);
@@ -64,7 +58,7 @@ body {
 }
 
 .btn-cancelar {
-    font-size: 14px;
+    font-size: 20px;
     background-color: #b42525;
     padding: 5px 10px;
     color: rgb(255, 255, 255);

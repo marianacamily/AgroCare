@@ -62,9 +62,10 @@
         }
 
         // Verifica as exceções
-        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha_Vet !== $senha_teste)) {
-            echo '<script>alert("Preencha os campos corretamente!");</script>';
+        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida)|| ($senha_Vet !== $senha_teste)) {
+            
             echo "<script>window.location.href = 'cadastroVeterinario.php';</script>";
+            echo '<script>alert("Preencha os campos corretamente!");</script>';
         } else {
             $partesNome = explode(" ", $nome_Vet);
             $primeiroNome = $partesNome[0];
@@ -90,7 +91,7 @@
         <p><h1>Cadastrar Veterinário</h1></p><br>
         <form action="cadastroVeterinario.php" method="post">
             <label>Nome Completo:</label>        
-            <input type="text" id="nome" name="nome_Vet" size="20" maxlength="20" placeholder="Digite seu nome completo" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
+            <input type="text" id="nome" name="nome_Vet" size="50" maxlength="20" placeholder="Digite seu nome completo" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
             <input type="text" name="cpf_Vet" size="20" maxlength="20" placeholder="Digite apenas os números" pattern="[0-9]{11}" required><br><br>
             
@@ -101,10 +102,11 @@
             <input type="text" name="telefone_Vet" placeholder="Digite apenas os números" pattern="[0-9]{11}" required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha_teste" placeholder="8 caracteres, 1 especial" required>
+            <input type="password" name="senha_teste" placeholder="Crie uma Senha" required>
+            <label>*Pelo menos 8 caracteres, 1 deles sendo especial.<label><br>
 
             <label>Confirmar senha: </label>
-            <input type="password" name="senha_Vet" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
+            <input type="password" onchange ="validarSenhas()" name="senha_Vet" placeholder="Confirme sua Senha" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
 
             <div class="btns">
                 <button onclick ="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>

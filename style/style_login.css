@@ -53,11 +53,7 @@ body * {
 .card-login {
     width: 60%;
     display: block;
-    /*
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    */
+
     padding: 30px 35px;
     border-radius: 20px;
     box-shadow: 0px 10px 40px #00000056;
@@ -67,8 +63,10 @@ body * {
 .card-login > h1 {
     margin: 0;
     font-weight: 800;
-    color: #7C894C
+    color: #7C894C;
+    align-items: center;
 }
+
 
 .texto-login {
     width: 100%;
@@ -142,8 +140,8 @@ body * {
     padding: 0.1rem;
     margin: 25px;
     height: 3rem;
-    margin-left: -40px;
     margin-right: 110px;
+    margin-left: -40px;
     background-color: #4A5034;
     border: none;
     border-radius: 8px;
@@ -154,6 +152,7 @@ body * {
     color: #FFFF;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px;
+    transform: translateX(20px);
     transition: background-color 0.3s ease-in-out; /* --guilherme// adicionei uma funcao para deixar mais smooth*/
 }
 #login-button:hover {
