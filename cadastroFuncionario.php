@@ -61,7 +61,7 @@
             die("Falha na conexão: " . $conn->connect_error);
         }
         // Verifica as exceções
-        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha_Func !== $senha_teste)) {
+        if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha_Fun !== $senha_teste)) {
             echo '<script>alert("Preencha os campos corretamente!");</script>';
             echo "<script>window.location.href = 'cadastroFuncionario.php';</script>";
         } else {
@@ -78,8 +78,10 @@
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
             echo "Dados cadastrados com sucesso!";
+            echo "<script>window.location.href = 'login.php';</script>";
         } else {
             echo "Erro ao cadastrar os dados: " . $conn->error;
+            echo "<script>window.location.href = 'cadastroFuncionario.php';</script>";
         }
         mysqli_close($conn);
 }
@@ -90,7 +92,7 @@
         <p><h1>Cadastrar Funcionário da Fazenda</h1></p><br>
         <form action="cadastroFuncionario.php" method="POST">
             <label>Nome Completo:</label>             <!--adicionado atributo pattern para regex-->
-            <input type="text" id="nome" name="nome_Func" size="20" maxlength="20" placeholder="Digite seu nome completo" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
+            <input type="text" id="nome" name="nome_Func" size="50" maxlength="20" placeholder="Digite seu nome completo" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
             <input type="text" name="cpf_Func" size="20" maxlength="20" placeholder="Digite apenas os números" pattern="[0-9]{11}" required><br><br>
             <label>Data de Nascimento:</label>
@@ -100,10 +102,11 @@
             <input type="text" name="telefone_Func" placeholder="Digite apenas os números" pattern="[0-9]{11}" required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha_teste" placeholder="8 caracteres, 1 especial" required>
+            <input type="password" placeholder="Crie uma Senha" name="senha_teste" required>
+            <label>*Pelo menos 8 caracteres, 1 deles sendo especial.<label><br>
 
             <label>Confirmar senha: </label>
-            <input type="password" name="senha_Func" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
+            <input type="password" onchange ="validarSenhas()" name="senha_Func" placeholder="Confirme sua Senha" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
 
             <div class="btns">
                 <button onclick="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>

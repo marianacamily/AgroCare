@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Fazendeiro</title>
-    <link rel="stylesheet"  type="text/css" href="style/cadastroFazenda.css">
+    <link rel="stylesheet"  type="text/css" href="style/style_fazendeiro.css">
 </head>
 <header>
    <img src="img/Logo1.png" width="180px">
@@ -23,6 +23,7 @@
         $senha = $_POST["senha_Fazendeiro"];
         $senha_teste = $_POST["senha_teste"];
         $nome_Fazenda = $_SESSION['nome_Fazenda'];
+        $_SESSION["cpf_Fazendeiro"] = $cpf;
         function formatarCPF($cpf) {
             return preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{2})$/', '$1.$2.$3-$4', $cpf);
         }
@@ -59,7 +60,7 @@
         if ($conn->connect_error) {
             die("Falha na conexão: " . $conn->connect_error);
         }
-
+        
         // Verifica as exceções
         if ((!$cpfFormatado || !$telefoneFormatado || !$senhaValida) || ($senha !== $senha_teste)) {
             echo '<script>alert("Preencha os campos corretamente!");</script>';
@@ -90,9 +91,9 @@
         <p><h1>Cadastrar Fazendeiro</h1></p><br>
         <form action="cadastroFazendeiro.php" method="POST" id="cadastroForm">
             <label>Nome:</label>             <!--adicionado atributo pattern para regex-->
-            <input type="text" id="nome" name="nome_Fazendeiro" size="20" maxlength="20" placeholder="Digite seu nome completo" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
+            <input type="text" id="nome" name="nome_Fazendeiro" placeholder="Digite seu nome completo" size="50" maxlength="20" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" required>
             <label>CPF:</label>
-            <input type="text" name="cpf_Fazendeiro" size="20" maxlength="20" placeholder="Digite apenas os números" pattern="[0-9]{11}" required ><br><br>
+            <input type="text" name="cpf_Fazendeiro"  placeholder="Digite apenas os números" size="20" maxlength="20" pattern="[0-9]{11}" required ><br><br>
 
             <label>Data de Nascimento:</label>
             <input type="date" name="dt_nascFazendeiro" size="20" maxlength="20" required>
@@ -101,14 +102,15 @@
             <input type="text" name="telefone_Fazendeiro" placeholder="Digite apenas os números" pattern="[0-9]{11}"  required><br><br>
 
             <label>Senha:</label>
-            <input type="password" name="senha_teste" placeholder="8 caracteres, 1 especial" required>
+            <input type="password" id="senhaT" name="senha_teste" placeholder="Crie uma Senha" required>
+            <label>*Pelo menos 8 caracteres, 1 deles sendo especial.<label><br>
 
             <label>Confirmar senha: </label>
-            <input type="password" name="senha_Fazendeiro" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
-
+            <input type="password" onchange ="validarSenhas()" id= "senhaF" name="senha_Fazendeiro" placeholder="Confirme sua Senha" pattern="^(?=.*[!@#$%^&*])(.{8,})$" required><br><br>
+            
             <div class="btns">
                 <button onclick= "limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
-                <a href="cadastroVeterinario.php"><button class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
+                <a href="cadastroVeterinario.php"><button id= "btn" class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
             </div>
         </form>
         <div>
@@ -124,7 +126,20 @@
     </div>
 
     <script src="scripts/script.js">
+        function validarSenhas() {
+        var senha = document.getElementById('senhaT').value;
+        var confirmarSenha = document.getElementById('senhaF').value;
+        var botao = document.getElementById('btn');
 
+        if (senha !== confirmarSenha) {
+            alert('As senhas não coincidem. Por favor, verifique novamente.');
+            botao.disabled = true; // Desabilita o botão
+            return false;
+        }
+
+        botao.disabled = false; // Habilita o botão
+        return true;
+        }
 
     </script>
 </body>
