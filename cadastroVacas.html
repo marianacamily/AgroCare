@@ -11,20 +11,27 @@
     <div class="header">
         <h1>Funcionário</h1>
         <img src="img/vaca.png" class="imagem-vaca" width="110px">
-        <span class="menu-trigger">
-            <button class="menu-button"></button>
-        </span>
+        <button class="menu-button" id="menuButton"></button>
+            <div class="menu-box" id="menuBox">
+                <ul>
+                    <li><a href=telaPrincipal.php>Home</a></li>
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="javascript:history.back()">Voltar</a></li>
+                    <li><a href="">Fechar</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="main">
         <div class="inputs">
             <h2>Cadastro de Vacas</h2>
             <div class="box1">
                 <label>N° Identificador:</label>
-                <input type="text" name= "num_identificador" size="21" placeholder="Digite o núm. do Identificador" maxlength="20" required>
+                <input type="text" name= "num_identificador" size="21" placeholder="Digite o núm. do Identificador." maxlength="20" required>
             </div>
             <div class="box1">
                 <label>Data de Nascimento:</label>
-                <input type="date" name= "data_nasc" size="21" placeholder="Digite a data de nascimento" maxlength="20" required>
+                <input class="date" type="date" name= "data_nasc" size="21" placeholder="Digite a data de nascimento" maxlength="20" required>
             </div>
             <h6>*Informe uma Data aproximada, apenas para o cálculo da idade do animal.</h6>
             <div class="box1">
@@ -36,6 +43,7 @@
             <button onclick="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
             <a href="login.php"><button  class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
     </div>
+    <script src="scripts/scriptCadVacas.js"></script>
     
 </body>
 </html>
