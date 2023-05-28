@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #4A5034;
+    font-size: larger;
+}
+
+.cadastro {
+    background: #4A5034;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 5%;
+    box-shadow: 0px 10px 40px #00000056;
+    background: #FFFF;
+    text-align: left;
+    border-radius: 10px;
+    margin-right: 200px;
+    padding: 90px;
+    margin-top: 0px; 
+    line-height: 40px;
+    font-size: larger;
+}
+
+.btn-cadastrar {
+    font-size: 20px;
+    background-color: #7c894c;
+    padding: 5px 10px;
+    color: rgb(255, 255, 255);
+    margin: 0px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px;
+}
+
+.btn-cancelar {
+    font-size: 20px;
+    background-color: #b42525;
+    padding: 5px 10px;
+    color: rgb(255, 255, 255);
+    margin: 25px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px;
+}
+
+input {
+    width: 250px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    background: #afbb85;
+    font-size: 12pt;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.cadastro > input::placeholder {
+    font-size: 10px;
+}
+
+.btn-cadastrar:hover {
+    background-color: #4A5034;
+}
+
+.btn-cancelar:hover {
+    background-color: #380000;
+}
+
+h1 {
+    color: #7c894c;
+}
+
+.btns {
+    width: 50%;
+    margin: 0 auto;
+}
+
+footer {
+    text-align: justify;
+}
