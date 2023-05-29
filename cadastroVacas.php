@@ -46,9 +46,7 @@
             <a href="login.php"><button  class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
     </div>
     <script src="scripts/scriptCadVacas.js"></script>
-    
-</body>
-<?php
+    <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start();
         // Recebe os dados do formulário
@@ -81,5 +79,6 @@
         }
         mysqli_close($conn);
 }
-?>
+?> 
+</body>
 </html>
