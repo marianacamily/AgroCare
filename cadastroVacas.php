@@ -25,7 +25,7 @@
     <div class="main">
         <div class="inputs">
             <h2>Cadastro de Vacas</h2>
-            <form>
+            <form action="cadastroVacas.php" method="POST">
                 <div class="box1">
                     <label>N° Identificador:</label>
                     <input type="text" name= "num_ID_Vaca" size="21" placeholder="Digite o N° Identificador" pattern="[0-9]" maxlength="10" required>
@@ -46,7 +46,7 @@
             <a href="login.php"><button  class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
     </div>
     <script src="scripts/scriptCadVacas.js"></script>
-    <?php
+<?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start();
         // Recebe os dados do formulário
