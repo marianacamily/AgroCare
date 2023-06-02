@@ -55,6 +55,7 @@ CREATE TABLE Vaca (
     num_ID_Vaca varchar(10) PRIMARY KEY NOT NULL,
     data_Nasc_Vaca Date NOT NULL,
     raça_Vaca varchar(25) NOT NULL,
+	estado_Inseminação varchar(30) NOT NULL,
     FK_id_Fazenda int, FOREIGN KEY (FK_id_Fazenda) REFERENCES Fazenda (id_Fazenda)
 );
 

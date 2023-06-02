@@ -78,7 +78,7 @@
             </div>
             <div class="btns">
                 <button onclick="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
-                <a href="login.php"><button  class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
+                <a href="cadastroVacas.php"><button  class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
             </div>
         </form>
     </div>
