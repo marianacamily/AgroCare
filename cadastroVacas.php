@@ -35,9 +35,8 @@
         
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
-            echo "Dados cadastrados com sucesso!";
         } else {
-            echo "Erro ao cadastrar os dados: " . $conn->error;
+            $conn->error;
         }
         mysqli_close($conn);
 }
@@ -51,7 +50,7 @@
                     <li><a href=telaPrincipal.php>Home</a></li>
                     <li><a href="#">Perfil</a></li>
                     <li><a href="javascript:history.back()">Voltar</a></li>
-                    <li><a href="">Fechar</a></li>
+                    <li><a href="Login.php">Sair</a></li>
                 </ul>
             </div>
         </div>
@@ -73,12 +72,16 @@
                     <div class="box1">
                         <label>Raça:</label>
                         <input type="text" name= "raça_Vaca" size="21" placeholder="Digite a raça da Vaca" maxlength="20" required>
-                </form>
-                </div>
+                    </div>
             </div>
             <div class="btns">
                 <button onclick="limparCampos()" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
-                <a href="cadastroVacas.php"><button  class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
+                <a href="cadastroVacas.php"><button class="btn-cadastrar" type="submit" name="cadastrar">Cadastrar</button></a>
+                <?php
+                    if (isset($_POST["cadastrar"])){
+                        echo "<script>alert('Vaca cadastrada com Sucesso')</script>";
+                    }
+                ?>
             </div>
         </form>
     </div>
