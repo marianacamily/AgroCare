@@ -49,6 +49,7 @@
                 <ul>
                     <li><a href=telaPrincipal.php>Home</a></li>
                     <li><a href="javascript:history.back()">Voltar</a></li>
+                    <li><a href="">Fechar</a><li>
                     <li><a href="Login.php">Sair</a></li>
                 </ul>
             </div>
