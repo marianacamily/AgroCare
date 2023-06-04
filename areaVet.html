@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="vet.css">
+    <title>Área do Veterinário</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Veterinário- Nome do Veterinário</h1>
+        <img src="vaca.png" class="imagem-vaca" width="110px">
+        <button class="menu-button" id="menuButton"></button>
+            <div class="menu-box" id="menuBox">
+                <ul>
+                    <li><a href=telaPrincipal.php>Home</a></li>
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="javascript:history.back()">Voltar</a></li>
+                    <li><a href="">Fechar</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="inputs">
+            <h2>Inseminação de Vacas</h2>
+            <form>
+                <div class="box1">
+                    <label>N° Identificador:</label>
+                    <input type="text" name= "num_ID_Vaca" size="21" placeholder="" pattern="[0-9]" maxlength="10" required>
+                    <button onclick="" id="btn-buscar" class="btn-buscar">Buscar</button>
+                </div>
+                <div class="box1">
+                    <label>Vaca: Número da Vaca</label>
+                </div>
+                <div class="box2">
+                    <h4>*Informações de Inseminações Anteriores*</h4>
+                </div>
+                <div class="box3">
+                    <label>Sera Realizada uma Nova Inseminação?</label>
+                </div>
+                
+            </form>
+            </div>
+        </div>
+        <div class="btns">
+            <input type="radio" name="info" id="respostas" value="n">
+            <label for="respostas">Sim</label>
+            <input type="radio" name="info" id="respostas" value="n">
+            <label for="respostas">Não</label>
+            
+        </div>
+    
+</body>
+</html>
