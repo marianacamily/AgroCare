@@ -224,3 +224,13 @@ input, button {
   border-radius: 20px;
   cursor: pointer; 
 }
+h6{
+  float: center;
+  display: inline-block;
+  margin: 195px;
+  padding: 0px;
+  text-align: center;
+  margin-top: 0px;
+  vertical-align: top;
+  white-space: nowrap;
+}
