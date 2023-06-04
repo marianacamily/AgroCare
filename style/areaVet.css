@@ -13,9 +13,10 @@ body {
 }
 
 .imagem-vaca {
-    position: absolute;
-    top: 0;
-    right: 30px;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  align-self: center;
 }
 
 h1 {

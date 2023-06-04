@@ -14,6 +14,7 @@
         <button class="menu-button" id="menuButton"></button>
             <div class="menu-box" id="menuBox">
                 <ul>
+                    <li><a href="areaVet.php">Sair</a></li>
                     <li><a href="javascript:history.back()">Voltar</a></li>
                     <li><a href="login.php">Sair</a></li>
                 </ul>

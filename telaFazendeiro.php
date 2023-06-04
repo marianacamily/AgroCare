@@ -14,6 +14,7 @@
         <button class="menu-button" id="menuButton"></button>
             <div class="menu-box" id="menuBox">
                 <ul>
+                <li><a href="telaFazendeiro.php">Acompanhamento</a></li>
                     <li><a href="javascript:history.back()">Voltar</a></li>
                     <li><a href="Login.php">Sair</a></li>
                 </ul>
