@@ -42,7 +42,9 @@
                 // Verifica se houve um erro na consulta
             if (!$resultado) {
                 die("Erro na consulta: " . $conn->error);
+            
             }
+
 
             } elseif ($funcao === 'Veterinário') {
             // Consulta na tabela dos veterinários
@@ -61,7 +63,6 @@
                 $sql = "SELECT * FROM Funcionário WHERE email_Func = '$email' AND senha_Func = '$senha'";
                 // Executa a consulta
                 $resultado = $conn->query($sql);
-                echo"login bem-sucedido!";
                             
                 // Verifica se houve um erro na consulta
                 if (!$resultado) {
@@ -70,7 +71,22 @@
         }
 
         // Verifica o número de linhas retornadas pelo resultado da consulta
-        if (mysqli_num_rows($resultado) == 1) {
+        if (mysqli_num_rows($resultado) == 1 && $funcao == 'Fazendeiro') {
+
+            // Iniciar a sessão (se já não estiver iniciada)
+            session_start();
+            $_SESSION['usuario'] = $email;
+
+            // Dados validados
+            echo "Dados validados! Redirecionando...";
+            // Definir variáveis de sessão para armazenar informações do usuário logado
+            echo "<script>window.location.href = 'telaFazendeiro.php';</script>";
+            exit;
+
+        }
+
+        // Verifica o número de linhas retornadas pelo resultado da consulta
+        if (mysqli_num_rows($resultado) == 1 && $funcao == 'Veterinário') {
 
             // Iniciar a sessão (se já não estiver iniciada)
             session_start();
@@ -81,11 +97,20 @@
             // Definir variáveis de sessão para armazenar informações do usuário logado
             echo "<script>window.location.href = 'telaPrincipal.php';</script>";
             exit;
+        }
 
+                // Verifica o número de linhas retornadas pelo resultado da consulta
+        if (mysqli_num_rows($resultado) == 1 && $funcao == 'Funcionário') {
 
-        } else {
-            //combinacao de email e senha invalida
-            echo "combinacao de email e senha invalida.!";
+            // Iniciar a sessão (se já não estiver iniciada)
+            session_start();
+            $_SESSION['usuario'] = $email;
+
+            // Dados validados
+            echo "Dados validados! Redirecionando...";
+            // Definir variáveis de sessão para armazenar informações do usuário logado
+            echo "<script>window.location.href = 'cadastroVacas.php';</script>";
+            exit;
         }
 
         $conn->close();
