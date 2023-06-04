@@ -211,14 +211,14 @@ input, button {
 
 .btn-sim {
   color: white;
-  width: 70px;
-  margin-right: 20%;
+  background-color: #7c894c;
+  width: 200px;
   border-radius: 20px;
   cursor: pointer;
 }
 
 .btn-nao {
-  width: 70px;
+  width: 250px;
   color: white;
   background-color:#bb1616;
   border-radius: 20px;
