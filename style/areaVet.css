@@ -122,14 +122,20 @@ h1 {
 
 
 .box1 {
-  display:flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
   text-align: center;
   justify-content: center;
 }
 
+input, button {
+  margin-bottom: 10px;
+}
+
   label {
-  display: flex;
+  align-items: center;
+  text-align: center;
   margin-right: 20px;
   color: #7c894c;
   font-size: larger;
@@ -158,19 +164,24 @@ h1 {
 }
 .btn-sim:hover {
   background-color: #4A5034;
-  border-radius: 20px;
 }
 
-.btn-não:hover {
+.btn-nao:hover {
   background-color: #380000;
+}
+
+.btn-buscar:hover {
+  background-color: #4A5034;
 }
 
 .btns {
   display: flex;
-  width: 15%;
+  width: 100%;
   margin: 0 auto;
+  padding: 20px;
   align-items: center;
   justify-content: center;
+
 }.box2{
    color: #7c894c;
    display: flex;
@@ -182,13 +193,34 @@ h1 {
 }h6{
     color:#7c894c;
     text-align: center;
-}.btn-buscar{
-    color: white;
-    background-color: #7c894c;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    padding: 5px;
-    border-radius: 100px;
-    width: 90px;
+}
+.btn-buscar {
+  border: none;
+  outline: none;
+  width: 15%;
+  border-radius: 20px;
+  background-color: #7c894c;
+  color: white;
+  padding: 5px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-sim {
+  color: white;
+  width: 70px;
+  margin-right: 20%;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-nao {
+  width: 70px;
+  color: white;
+  background-color:#bb1616;
+  border-radius: 20px;
+  cursor: pointer; 
 }
