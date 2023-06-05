@@ -15,6 +15,7 @@
         $num_ID_Vaca = $_POST["num_ID_Vaca"];
         $data_Nasc_Vaca = $_POST["data_Nasc_Vaca"];
         $raça_Vaca = $_POST["raça_Vaca"];
+        $estado_Inseminação = "Inseminação Pendente";
 
         $servername = "localhost";
         $username = "agrocare";
@@ -29,8 +30,8 @@
             die("Falha na conexão: " . $conn->connect_error);
         }
         
-        $sql = "INSERT INTO Vaca (num_ID_Vaca, data_Nasc_Vaca, raça_Vaca) 
-        VALUES ('$num_ID_Vaca', '$data_Nasc_Vaca', '$raça_Vaca')";
+        $sql = "INSERT INTO Vaca (num_ID_Vaca, data_Nasc_Vaca, raça_Vaca, estado_Inseminação) 
+        VALUES ('$num_ID_Vaca', '$data_Nasc_Vaca', '$raça_Vaca', '$estado_Inseminação')";
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
         } else {
@@ -84,29 +85,5 @@
         </form>
     </div>
     <script src="scripts/scriptCadVacas.js"></script>
-    <script src = "scripts/script.js">
-    document.getElementById('linkExcluir').addEventListener('click', function(e) {
-        e.preventDefault();
-        var itemId = this.getAttribute('data-id');
-        
-        // Chamar a função em PHP para excluir o item
-        excluirItem(itemId);
-    });
-    
-    function excluirItem(itemId) {
-        // Fazer uma requisição AJAX para chamar a função PHP de exclusão
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'excluir_item.php', true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Exibição da resposta da exclusão (opcional)
-                console.log(xhr.responseText);
-            }
-        };
-        xhr.send('id=' + itemId);
-    }
-    </script>
-
 </body>
 </html>

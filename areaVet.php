@@ -26,16 +26,15 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='dados-vaca'>";
-                    echo "<label>Número Identificador: " . $row['num_ID_Vaca'] . "</label><br>";
-                    // Exiba outros dados da vaca conforme necessário
+                    echo "<script>alert('Número Identificador: " . $row['num_ID_Vaca'] . " - Inseminação Confirmada')</script>";
                     echo "</div>";
                 }
+            } else{
+                echo "<script>alert('Vaca não encontrada no sistema, tente outro ID')</script>";
             }
-        } else {
-            echo "nenhuma resultado encontrado";
-        }
-        if (!empty($_GET['botaosim'])) {
-            $data = $_GET['botaosim'];
+        } 
+        if (!empty($_GET['search'])) {
+            $data = $_GET['search'];
         
             // Consulta SQL para obter a vaca correspondente ao número identificador
             $sql = "SELECT * FROM Vaca WHERE num_ID_Vaca LIKE '%$data' ORDER BY num_ID_Vaca DESC";
@@ -47,27 +46,11 @@
                     $id_vaca = $row['num_ID_Vaca'];
         
                     // Atualize o campo de inseminação da vaca adicionando +1
-                    $sql_update = "UPDATE Vaca SET estado_Inseminação = estado_Inseminação + 1 WHERE num_ID_Vaca = '$id_vaca'";
+                    $string = "Inseminação Realizada";
+                    $sql_update = "UPDATE Vaca SET estado_Inseminação = '$string' WHERE num_ID_Vaca = '$id_vaca'";
                     $connectbd->query($sql_update);
                 }
-            } elseif (!empty($_GET['botaonao'])) {
-                $data = $_GET['botaonao'];
-
-                // Consulta SQL para obter a vaca correspondente ao número identificador
-                $sql = "SELECT * FROM Vaca WHERE num_ID_Vaca LIKE '%$data' ORDER BY num_ID_Vaca DESC";
-                $result = $connectbd->query($sql);
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        // Obtenha o ID da vaca
-                        $id_vaca = $row['num_ID_Vaca'];
-
-                        // Atualize o campo de estado_Inseminação da vaca subtraindo 1
-                        $sql_update = "UPDATE Vaca SET estado_Inseminação = estado_Inseminação - 1 WHERE num_ID_Vaca = '$id_vaca'";
-                        $connectbd->query($sql_update);
-                    }
-                }
-            }
+            } 
         }
     ?>
 
@@ -90,17 +73,13 @@
             <form mehtod = "GET" action= "areaVet.php">
                 <div class="box1">
                     <label>N° Identificador:</label>
-                    <input type="search"class = "form-control w-25" id ="pesquisar" name= "search" size="21" placeholder="Digite o ID da Vaca" pattern="[0-9]{3}" maxlength="10" required><br>
+                    <input type="search"class = "form-control w-25" id ="pesquisar" name= "search" size="30" placeholder="ID da Vaca que será Inseminada" pattern="[0-9]{3}" maxlength="10" required><br>
                     <button oncanplay ="searchData()" id="btn-buscar" class="btn-buscar">Buscar</button>
                 </div>
             </form>
             <form>
                 <div class="box1">
-                    <label>Vaca: </label><br><br>
-                    <label>Será realizada a Inseminação?</label><br><br>
-                    <input type="button" class="btn-sim" name="botaosim" id="botaosim" value="Realizar Inseminação"><br>
-                    <input type="button" class="btn-nao" name="botaonao" id="botaonao" value="Não Realizar Inseminação"><br>
-                    <footer>*Ao clicar em alguma dessas opções será confirmado a execução/não execução do procedimento na vaca</footer>
+                    <footer>*Ao informar o ID da vaca e Realizar a busca, você estará confirmando a realização da Inseminação</footer>
                 </div>
             </form>
         </div>

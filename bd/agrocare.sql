@@ -59,19 +59,3 @@ CREATE TABLE Vaca (
     FK_id_Fazenda int, FOREIGN KEY (FK_id_Fazenda) REFERENCES Fazenda (id_Fazenda)
 );
 
-/*Não está Funcionando*/
-CREATE TABLE Login_Fazendeiro (
-    id_Login_Faz int PRIMARY KEY NOT NULL,
-    FK_id_Fazenda int, FOREIGN KEY (FK_id_Fazenda) REFERENCES Fazenda (id_Fazenda),
-    FK_email_Fazendeiro varchar(50), FOREIGN KEY (FK_email_Fazendeiro) REFERENCES Fazendeiro (email_Fazendeiro)
-);
-
-ALTER TABLE Login_Fazendeiro MODIFY id_Login_Faz int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
-CREATE TABLE Login_Veterinário (
-    id_Login_Vet int PRIMARY KEY NOT NULL,
-    FK_id_Fazenda int, FOREIGN KEY (FK_id_Fazenda) REFERENCES Fazenda (id_Fazenda),
-    FK_email_Vet varchar(50), FOREIGN KEY (FK_email_Vet) REFERENCES Veterinário (email_Vet)
-);
-
-ALTER TABLE Login_Veterinário MODIFY id_Login_Vet int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
