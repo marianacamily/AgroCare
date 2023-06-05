@@ -74,6 +74,7 @@
             VALUES ('$nome', '$cpf', '$dt_nasc', '$telefone', '$senha', '$email')";
             $fk = "UPDATE Fazenda SET FK_cpf_Fazendeiro = '$cpf' WHERE nome_Fazenda = '$nome_Fazenda'";
 
+
             echo "<script>window.location.href = 'cadastroVeterinario.php';</script>";
         }
         // Execute a consulta

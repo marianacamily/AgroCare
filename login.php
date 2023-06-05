@@ -15,7 +15,8 @@
         $funcao = $_POST['função'];
         $email = $_POST['usuario'];
         $senha = $_POST['senha'];
-
+        $_SESSION['usuario'] = $email;
+        $_SESSION['senha'] = $senha;
 
         $servername = "localhost";
         $username = "agrocare";
@@ -95,7 +96,7 @@
             // Dados validados
             echo "Dados validados! Redirecionando...";
             // Definir variáveis de sessão para armazenar informações do usuário logado
-            echo "<script>window.location.href = 'telaPrincipal.php';</script>";
+            echo "<script>window.location.href = 'areaVet.php';</script>";
             exit;
         }
 
