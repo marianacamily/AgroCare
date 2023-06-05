@@ -14,11 +14,12 @@
         <button class="menu-button" id="menuButton"></button>
             <div class="menu-box" id="menuBox">
                 <ul>
+                    <li><a href="telaPrincipal.php">gerenciar cadastros</a></li>
+                    <li><a href="">fechar</a></li>
                     <li><a href="javascript:history.back()">Voltar</a></li>
                     <li><a href="Login.php">Sair</a></li>
                 </ul>
             </div>
-    </div>
     </div>
     <div class="main">
         <h2>Acompanhamento</h3>
@@ -64,7 +65,7 @@
                         echo "<td>" . $row["raça_Vaca"] . "</td>";
                         echo "<td>" . $row["estado_Inseminação"] . "</td>";
 
-                        echo "</tr>";
+
                     }
     
                     // Fechamento da conexão com o banco de dados
