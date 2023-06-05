@@ -57,7 +57,7 @@
 
     <div class="header">
         <h1>Veterinário</h1>
-        <img src="vaca.png" class="imagem-vaca" width="110px">
+        <img src="img/vaca.png" class="imagem-vaca" width="110px">
         <button class="menu-button" id="menuButton"></button>
             <div class="menu-box" id="menuBox">
                 <ul>
