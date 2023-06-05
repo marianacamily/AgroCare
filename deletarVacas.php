@@ -26,6 +26,7 @@
             }
             $result = $connectbd->query($sql);
     ?>
+
     <div class="header">
         <h1>Funcionário</h1>
         <img src="vaca.png" class="imagem-vaca" width="110px">

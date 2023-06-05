@@ -15,8 +15,9 @@ body {
 
 .imagem-vaca {
     position: absolute;
-    top: 0;
-    right: 30px;
+    top: 0px;
+    right: 10px;
+    align-self: center;
 }
 
 h1 {
@@ -98,6 +99,7 @@ h2 {
 table {
     border-collapse: collapse;
     width: 100%;
+    border-radius: 20px;
 }
 th, td {
     padding: 8px;
@@ -116,9 +118,6 @@ th {
 .container td {
     font-weight: normal;
     font-size: 1em;
--webkit-box-shadow: 0 2px 2px -2px #0E1119;
-     -moz-box-shadow: 0 2px 2px -2px #0E1119;
-          box-shadow: 0 2px 2px -2px #0E1119;
 }
 
 .container {
@@ -149,18 +148,18 @@ padding-left:2%;
 }
 
 .container td {
-    color: #60af50;
+    color: #afbb85;
 }
 
 .container tr:hover {
- background-color: #464A52;
--webkit-box-shadow: 0 6px 6px -6px #60af50;
-     -moz-box-shadow: 0 6px 6px -6px #60af50;
-          box-shadow: 0 6px 6px -6px #60af50;
+ background-color: #4A5034;
+-webkit-box-shadow: 0 6px 6px -6px #92a355;
+     -moz-box-shadow: 0 6px 6px -6px #92a355;
+          box-shadow: 0 6px 6px -6px #92a355;
 }
 
 .container td:hover {
-background-color: #7fffa5;
+background-color: #92a355;
 color: #403E10;
 font-weight: bold;
 

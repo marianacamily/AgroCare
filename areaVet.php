@@ -8,6 +8,7 @@
     <title>Área do Veterinário</title>
 </head>
 <body>
+
     <?php
         session_start();
         include_once('bd/conexao_agrocare.php');
@@ -69,6 +70,8 @@
             }
         }
     ?>
+
+
     <div class="header">
         <h1>Veterinário</h1>
         <img src="vaca.png" class="imagem-vaca" width="110px">
