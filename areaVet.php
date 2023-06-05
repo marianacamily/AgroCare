@@ -30,7 +30,7 @@
                     echo "</div>";
                 }
             } else{
-                echo "<script>alert('Vaca não encontrada no sistema, tente outro ID')</script>";
+                echo "<script>alert('Vaca não encontrada no sistema, confira o Identificador informado.')</script>";
             }
         } 
         if (!empty($_GET['search'])) {
@@ -79,7 +79,7 @@
             </form>
             <form>
                 <div class="box1">
-                    <footer>*Ao informar o ID da vaca e Realizar a busca, você estará confirmando a realização da Inseminação</footer>
+                    <footer>*Ao informar a Identificação do Animal e Realizar a busca, você estará confirmando a realização da Inseminação</footer>
                 </div>
             </form>
         </div>
