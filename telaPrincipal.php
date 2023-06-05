@@ -14,8 +14,7 @@
         <button class="menu-button" id="menuButton"></button>
             <div class="menu-box" id="menuBox">
                 <ul>
-                    <li><a href="">fechar</a></li>
-                    <li><a href="javascript:history.back()">Voltar</a></li>
+                    <li><a href="telaPrincipal.php">Voltar</a></li>
                     <li><a href="Login.php">Sair</a></li>
                 </ul>
             </div>

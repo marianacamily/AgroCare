@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/areaVet.css">
-    <title>Área do Veterinário</title>
+    <title>Inseminação</title>
 </head>
 <body>
 
@@ -78,8 +78,7 @@
         <button class="menu-button" id="menuButton"></button>
             <div class="menu-box" id="menuBox">
                 <ul>
-                    <li><a href="areaVet.php">Sair</a></li>
-                    <li><a href="javascript:history.back()">Voltar</a></li>
+                    <li><a href="areaVet.php">Voltar</a></li>
                     <li><a href="login.php">Sair</a></li>
                 </ul>
             </div>

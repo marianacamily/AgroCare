@@ -31,13 +31,6 @@
         
         $sql = "INSERT INTO Vaca (num_ID_Vaca, data_Nasc_Vaca, raça_Vaca) 
         VALUES ('$num_ID_Vaca', '$data_Nasc_Vaca', '$raça_Vaca')";
-        $dl = "DELETE FROM Vaca WHERE num_ID_Vaca = $num_ID_Vaca";
-        if ($conn->query($dl) === TRUE) {
-            echo "item excluido com sucesso";
-        } else {
-            echo "erro ao excluir o item";
-        }
-        
         // Execute a consulta
         if ($conn->query($sql) === TRUE) {
         } else {
@@ -53,7 +46,7 @@
             <div class="menu-box" id="menuBox">
                 <ul>
                     <li><a href=deletarVacas.php>Deletar Vacas</a></li>
-                    <li><a href="javascript:history.back()">Voltar</a></li>
+                    <li><a href="cadastroVacas.php">Voltar</a></li>
                     <li><a href="login.php">Sair</a></li>
 
                 </ul>
